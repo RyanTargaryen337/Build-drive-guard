@@ -1,0 +1,178 @@
+:root {
+  --bg: #080808;
+  --surface: #111110;
+  --border: rgba(201, 168, 76, 0.14);
+  --gold: #c9a84c;
+  --gold2: #dfc072;
+  --text: #ede8dc;
+  --muted: #68665e;
+  --danger: #d14535;
+  --green: #4a9b6a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Presentation shell ── */
+.presentation {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Progress bar ── */
+.progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 100;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+
+/* ── Slide counter ── */
+.slide-counter {
+  position: fixed;
+  bottom: 16px;
+  right: 28px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  z-index: 100;
+  user-select: none;
+}
+
+/* ── Nav buttons ── */
+.nav-btn {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 18%;
+  z-index: 50;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+.nav-btn:hover {
+  opacity: 1;
+}
+.nav-btn.prev {
+  left: 0;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+.nav-btn.next {
+  right: 0;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+.nav-btn svg {
+  width: 26px;
+  height: 26px;
+  color: var(--gold);
+}
+
+/* ── Slide wrapper ── */
+.slide-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 5vh 7vw;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.38s ease, transform 0.38s ease;
+  transform: translateX(36px);
+  will-change: opacity, transform;
+}
+.slide-wrapper.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+}
+.slide-wrapper.out {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition-duration: 0.3s;
+}
+
+/* ── Shared slide elements ── */
+.sec-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4vh;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sec-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 100px;
+}
+
+h1.hero {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(80px, 12vw, 170px);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+h2.hl {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 50px);
+  font-weight: 700;
+  line-height: 1.18;
+  margin-bottom: 3vh;
+  max-width: 800px;
+}
+
+.sub {
+  font-size: clamp(12px, 1vw, 16px);
+  color: rgba(237, 232, 220, 0.6);
+  line-height: 1.65;
+  max-width: 640px;
+}
+
+.gold {
+  color: var(--gold);
+}
+.muted-c {
+  color: var(--muted);
+}

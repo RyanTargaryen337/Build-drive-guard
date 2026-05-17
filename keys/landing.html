@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KEYS — Africa's Designated Driver Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080808;
+  --surface: #111110;
+  --surface2: #181816;
+  --border: rgba(201,168,76,.14);
+  --gold: #C9A84C;
+  --gold2: #DFC072;
+  --text: #EDE8DC;
+  --muted: #68665E;
+  --danger: #D14535;
+  --green: #4A9B6A;
+  --max: 1100px;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ─── LAYOUT ─── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 5vw; }
+section { padding: 100px 0; }
+@media (max-width: 768px) { section { padding: 64px 0; } }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(8,8,8,.85); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px; max-width: var(--max); margin: 0 auto; padding: 0 5vw;
+}
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px; font-weight: 700; letter-spacing: .06em; color: var(--text);
+}
+.logo span { color: var(--gold); }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--bg); background: var(--gold);
+  padding: 10px 22px; border: 0; cursor: pointer; transition: background .2s;
+}
+.nav-cta:hover { background: var(--gold2); }
+
+/* ─── HERO ─── */
+.hero-section {
+  min-height: 100vh; display: flex; align-items: center;
+  padding-top: 64px;
+  position: relative; overflow: hidden;
+}
+.hero-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,168,76,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+h1.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 7vw, 110px);
+  font-weight: 900; line-height: .95; letter-spacing: -.03em;
+  color: var(--text); margin-bottom: 32px;
+}
+h1.hero-title em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-size: clamp(15px, 1.4vw, 19px); font-weight: 300;
+  color: rgba(237,232,220,.65); max-width: 520px; line-height: 1.65;
+  margin-bottom: 44px;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--bg); background: var(--gold);
+  padding: 15px 30px; border: 0; cursor: pointer; transition: background .2s;
+}
+.btn-primary:hover { background: var(--gold2); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text); background: transparent;
+  padding: 14px 30px; border: 1px solid var(--border); cursor: pointer; transition: border-color .2s;
+}
+.btn-ghost:hover { border-color: rgba(201,168,76,.4); }
+.hero-note { font-size: 11px; color: var(--muted); margin-top: 20px; }
+.hero-badge {
+  position: absolute; right: 5vw; top: 50%; transform: translateY(-50%);
+  text-align: center;
+}
+.badge-ring {
+  width: clamp(160px, 18vw, 260px); height: clamp(160px, 18vw, 260px);
+  border-radius: 50%; border: 1px solid var(--border);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px;
+}
+.badge-ring .br-label { font-family: 'Space Grotesk', sans-serif; font-size: .52rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+.badge-ring .br-val { font-family: 'Playfair Display', serif; font-size: clamp(36px, 4vw, 58px); font-weight: 900; color: var(--gold); line-height: 1; }
+.badge-ring .br-sub { font-size: 10px; color: var(--muted); max-width: 100px; text-align: center; line-height: 1.4; }
+@media (max-width: 900px) { .hero-badge { display: none; } }
+
+/* ─── PROBLEM ─── */
+.problem-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.section-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+h2.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 700; line-height: 1.15; margin-bottom: 48px; max-width: 700px;
+}
+.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+@media (max-width: 680px) { .problem-grid { grid-template-columns: 1fr; } }
+.problem-stat {
+  background: var(--surface2);
+  padding: 40px 32px;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.ps-region {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .52rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 20px;
+}
+.ps-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(44px, 5.5vw, 76px); font-weight: 700;
+  color: var(--gold); line-height: 1; margin-bottom: 12px;
+  display: block;
+}
+.ps-desc { font-size: clamp(12px, 1vw, 14px); color: rgba(237,232,220,.55); line-height: 1.55; }
+.problem-insight {
+  margin-top: 48px; padding: 28px 32px;
+  border-left: 2px solid var(--gold);
+  font-size: clamp(14px, 1.2vw, 18px); font-style: italic;
+  color: rgba(237,232,220,.8); max-width: 780px;
+}
+
+/* ─── HOW IT WORKS ─── */
+.steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 56px; }
+@media (max-width: 900px) { .steps-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .steps-grid { grid-template-columns: 1fr; } }
+.step-card {
+  padding: 32px 24px;
+  border: 1px solid var(--border);
+  border-right: 0;
+  position: relative;
+  transition: background .2s;
+}
+.step-card:last-child { border-right: 1px solid var(--border); }
+.step-card:hover { background: var(--surface); }
+.sc-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(36px, 4vw, 58px); font-weight: 700;
+  color: var(--gold); line-height: 1; margin-bottom: 16px;
+}
+.sc-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text); margin-bottom: 10px;
+}
+.sc-body { font-size: 13px; color: rgba(237,232,220,.52); line-height: 1.6; }
+.steps-note {
+  margin-top: 32px; font-size: 13px; color: var(--muted); line-height: 1.55;
+  padding: 20px 24px; background: var(--surface); border: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.steps-note::before {
+  content: 'i'; font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 16px; color: var(--gold); flex-shrink: 0; line-height: 1.4;
+}
+
+/* ─── WHY AFRICA ─── */
+.why-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 48px; }
+@media (max-width: 680px) { .why-grid { grid-template-columns: 1fr; } }
+.why-cell {
+  background: var(--bg);
+  padding: 36px 32px;
+  transition: background .2s;
+}
+.why-cell:hover { background: var(--surface2); }
+.wc-num {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3vw, 42px); color: rgba(201,168,76,.35);
+  font-style: italic; font-weight: 700; line-height: 1; margin-bottom: 16px;
+}
+.wc-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--text); margin-bottom: 12px;
+}
+.wc-body { font-size: clamp(13px, 1vw, 15px); color: rgba(237,232,220,.55); line-height: 1.65; }
+.market-bar {
+  margin-top: 48px; padding: 24px 28px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+}
+.mb-label { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.mb-val { font-family: 'Space Grotesk', sans-serif; font-size: clamp(18px, 2vw, 26px); font-weight: 700; color: var(--gold); }
+.mb-arrow { font-size: 18px; color: var(--muted); }
+.mb-note { font-size: 13px; color: rgba(237,232,220,.45); }
+
+/* ─── CITIES ─── */
+.cities-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 56px; }
+@media (max-width: 720px) { .cities-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .cities-grid { grid-template-columns: 1fr; } }
+.city-card {
+  padding: 36px 28px;
+  border: 1px solid var(--border);
+  border-right: 0;
+}
+.city-card:last-child { border-right: 1px solid var(--border); }
+.cc-phase {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .5rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+.cc-city {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 2.5vw, 34px); font-weight: 700; color: var(--text);
+  line-height: 1.1; margin-bottom: 6px;
+}
+.cc-country { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+.cc-when {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; color: rgba(201,168,76,.7); letter-spacing: .06em;
+}
+
+/* ─── DRIVERS ─── */
+.drivers-section {
+  background: linear-gradient(135deg, rgba(201,168,76,.06) 0%, transparent 50%);
+  border-top: 1px solid var(--border);
+}
+.drivers-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+@media (max-width: 768px) { .drivers-inner { grid-template-columns: 1fr; gap: 40px; } }
+.drivers-metric { display: flex; flex-direction: column; gap: 28px; }
+.dm-item { display: flex; align-items: baseline; gap: 16px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.dm-item:last-child { border-bottom: 0; padding-bottom: 0; }
+.dm-val { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 3.5vw, 48px); font-weight: 700; color: var(--gold); flex-shrink: 0; line-height: 1; }
+.dm-desc { font-size: clamp(12px, 1vw, 15px); color: rgba(237,232,220,.55); line-height: 1.55; }
+.drivers-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 50px); font-weight: 700; line-height: 1.15; margin-bottom: 20px; }
+.drivers-cta p { font-size: clamp(13px, 1.1vw, 16px); color: rgba(237,232,220,.6); line-height: 1.65; margin-bottom: 36px; max-width: 440px; }
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 0;
+}
+.footer-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 5vw;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+  gap: 24px;
+}
+.footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: .06em; }
+.footer-logo span { color: var(--gold); }
+.footer-meta { font-size: 11px; color: var(--muted); line-height: 1.6; text-align: right; }
+@media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">KEY<span>S</span></div>
+    <button class="nav-cta" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">
+      Join the waitlist
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-eyebrow">Launching Lagos · Q3 2026</div>
+    <h1 class="hero-title">
+      Your car.<br>
+      Your night.<br>
+      We drive you <em>home.</em>
+    </h1>
+    <p class="hero-sub">
+      Keys is Africa's designated driver network — a certified driver arrives on a foldable e-bike, stows it in your trunk, and drives you home in your own car. No surge. No strangers' cars. No risk.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" id="waitlist" onclick="alert('Waitlist coming soon — watch this space.')">
+        Join the waitlist →
+      </button>
+      <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">
+        See how it works
+      </button>
+    </div>
+    <p class="hero-note">Launching in Victoria Island &amp; Lekki, Lagos · Available via the Bolt app</p>
+  </div>
+  <div class="hero-badge">
+    <div class="badge-ring">
+      <span class="br-label">Road deaths<br>with alcohol</span>
+      <span class="br-val">58%</span>
+      <span class="br-sub">South Africa — 3× global average</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Africa is the worst place in the world to drink and drive.</h2>
+    <div class="problem-grid">
+      <div class="problem-stat">
+        <div class="ps-region">South Africa</div>
+        <span class="ps-num">58%</span>
+        <p class="ps-desc">of road deaths involve alcohol — nearly 3× the global average of 20%</p>
+      </div>
+      <div class="problem-stat">
+        <div class="ps-region">South Africa</div>
+        <span class="ps-num">R18.2B</span>
+        <p class="ps-desc">annual economic cost of alcohol-related crashes nationwide</p>
+      </div>
+      <div class="problem-stat">
+        <div class="ps-region">Nigeria</div>
+        <span class="ps-num">21.4</span>
+        <p class="ps-desc">road deaths per 100,000 people — among Africa's worst, with weak DUI enforcement</p>
+      </div>
+    </div>
+    <div class="problem-insight">
+      No scaled, app-based designated-driver category exists anywhere on the continent. Until now.
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Five steps. One safe ride home.</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="sc-num">1</div>
+        <div class="sc-title">Request</div>
+        <div class="sc-body">Open Bolt, tap the Keys category — right next to Economy and Comfort.</div>
+      </div>
+      <div class="step-card">
+        <div class="sc-num">2</div>
+        <div class="sc-title">Match</div>
+        <div class="sc-body">A certified Keys driver is dispatched to you on a foldable e-bike. ETA shown live.</div>
+      </div>
+      <div class="step-card">
+        <div class="sc-num">3</div>
+        <div class="sc-title">Verify</div>
+        <div class="sc-body">Driver arrives. A 360° vehicle scan via the app protects your car before the trip starts.</div>
+      </div>
+      <div class="step-card">
+        <div class="sc-num">4</div>
+        <div class="sc-title">Drive</div>
+        <div class="sc-body">E-bike folds into your trunk. Your driver takes you home in your own car.</div>
+      </div>
+      <div class="step-card">
+        <div class="sc-num">5</div>
+        <div class="sc-title">Settle</div>
+        <div class="sc-body">Drop-off confirmed with a photo. Pay through your Bolt wallet. Driver e-bikes back out.</div>
+      </div>
+    </div>
+    <div class="steps-note">
+      Every trip is covered by a bespoke per-trip insurance policy — structured with a local underwriter. Your car is protected from door to door.
+    </div>
+  </div>
+</section>
+
+<!-- WHY AFRICA -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-label">Why Africa</div>
+    <h2 class="section-title">Four structural advantages no other market has.</h2>
+    <div class="why-grid">
+      <div class="why-cell">
+        <div class="wc-num">i.</div>
+        <div class="wc-title">Labor economics flip the model</div>
+        <div class="wc-body">The driver economics that killed this category in the West simply don't apply here. A premium Keys shift pays more than a full day of standard ride-hailing — supply comes naturally.</div>
+      </div>
+      <div class="why-cell">
+        <div class="wc-num">ii.</div>
+        <div class="wc-title">Concentrated nightlife corridors</div>
+        <div class="wc-body">Victoria Island + Lekki (Lagos), Sandton + Rosebank (JoBurg), Westlands + Kilimani (Nairobi). Dense demand in tight radius — the geography designated driving needs to work.</div>
+      </div>
+      <div class="why-cell">
+        <div class="wc-num">iii.</div>
+        <div class="wc-title">Enforcement is rising fast</div>
+        <div class="wc-body">FRSC is ramping DUI checkpoints across Nigeria. South Africa has lowered its BAC limit to 0.00 for private drivers. The legal context is moving in our direction.</div>
+      </div>
+      <div class="why-cell">
+        <div class="wc-num">iv.</div>
+        <div class="wc-title">The distribution rail is already built</div>
+        <div class="wc-body">We're launching inside Bolt — Africa's #1 ride-hailing platform, with 60%+ market share in Nigeria and $104M committed to safety initiatives. Zero cold-start problem.</div>
+      </div>
+    </div>
+    <div class="market-bar">
+      <span class="mb-label">Africa ride-hailing market</span>
+      <span class="mb-val">USD 2.85B</span>
+      <span class="mb-arrow">→</span>
+      <span class="mb-val">USD 4.28B</span>
+      <span class="mb-label">by 2032</span>
+      <span class="mb-note" style="margin-left:auto">Designated driving is the missing premium category in that growth.</span>
+    </div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section>
+  <div class="container">
+    <div class="section-label">Where We're Going</div>
+    <h2 class="section-title">Lagos to the Gulf in 24 months.</h2>
+    <div class="cities-grid">
+      <div class="city-card">
+        <div class="cc-phase">Phase I · Months 0–6</div>
+        <div class="cc-city">Lagos</div>
+        <div class="cc-country">Nigeria</div>
+        <div class="cc-when">Launching Q3 2026 · VI + Lekki + Ikoyi</div>
+      </div>
+      <div class="city-card">
+        <div class="cc-phase">Phase II · Months 6–12</div>
+        <div class="cc-city">Johannes­burg</div>
+        <div class="cc-country">South Africa</div>
+        <div class="cc-when">Sandton · Rosebank</div>
+      </div>
+      <div class="city-card">
+        <div class="cc-phase">Phase III · Months 12–18</div>
+        <div class="cc-city">Nairobi &amp; Cape Town</div>
+        <div class="cc-country">Kenya / South Africa</div>
+        <div class="cc-when">Westlands · V&amp;A Waterfront</div>
+      </div>
+      <div class="city-card">
+        <div class="cc-phase">Phase IV · Months 18–24</div>
+        <div class="cc-city">Dubai</div>
+        <div class="cc-country">UAE</div>
+        <div class="cc-when">Safety-led differentiator vs Careem</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRIVERS -->
+<section class="drivers-section">
+  <div class="container">
+    <div class="drivers-inner">
+      <div class="drivers-metric">
+        <div class="dm-item">
+          <span class="dm-val">60%</span>
+          <span class="dm-desc">Driver take rate on every trip — premium earnings for weekend night shifts</span>
+        </div>
+        <div class="dm-item">
+          <span class="dm-val">45 min</span>
+          <span class="dm-desc">Average trip time — high earn per hour relative to standard rides</span>
+        </div>
+        <div class="dm-item">
+          <span class="dm-val">0</span>
+          <span class="dm-desc">Vehicle required — you arrive on the e-bike we supply, drive the customer's car home</span>
+        </div>
+      </div>
+      <div class="drivers-cta">
+        <div class="section-label">For Drivers</div>
+        <h2>Drive more.<br>Earn more.<br>No car needed.</h2>
+        <p>Keys driver positions open in Lagos from Q3 2026. Certified training, e-bike provided, insurance covered. High-earning weekend shifts in premium corridors.</p>
+        <button class="btn-primary" onclick="alert('Driver applications open Q2 2026 — check back soon.')">
+          Apply to drive →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">KEY<span>S</span></div>
+    <div class="footer-meta">
+      Strictly Confidential — For Bolt Review Only · V1.0 · Q2 2026<br>
+      Founder: Precious-Ryan Ndubuisi · Independent Web3 &amp; Fintech BD Consultant
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
