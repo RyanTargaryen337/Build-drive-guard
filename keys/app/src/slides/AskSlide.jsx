@@ -1,7 +1,7 @@
 export default function AskSlide({ data }) {
   return (
     <>
-      <div className="sec-label">XII · The Ask</div>
+      <div className="sec-label">{data.numeral} · {data.section}</div>
       <div className="ask-hl">
         90 days.
         <br />

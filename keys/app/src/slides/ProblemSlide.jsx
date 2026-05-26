@@ -16,6 +16,26 @@ export default function ProblemSlide({ data }) {
           </div>
         ))}
       </div>
+
+      {data.status_quo && (
+        <div className="status-quo-block">
+          <div className="sq-label">{data.status_quo.label}</div>
+          <div className="sq-row">
+            <span className="sq-text">{data.status_quo.workaround}</span>
+            <span className="sq-cost">{data.status_quo.cost_range}</span>
+          </div>
+          <div className="sq-note">{data.status_quo.note}</div>
+        </div>
+      )}
+
+      {data.compound_insights && (
+        <ul className="compound-insights">
+          {data.compound_insights.map((insight, i) => (
+            <li key={i}>{insight}</li>
+          ))}
+        </ul>
+      )}
+
       <div className="insight">{data.insight}</div>
     </>
   )

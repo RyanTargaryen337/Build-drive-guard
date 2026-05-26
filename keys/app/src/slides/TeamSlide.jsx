@@ -2,7 +2,7 @@ export default function TeamSlide({ data }) {
   const { founder, hires } = data
   return (
     <>
-      <div className="sec-label">XI · Who&apos;s Building This</div>
+      <div className="sec-label">{data.numeral} · {data.section}</div>
       <h2 className="hl" style={{ marginBottom: '2vh' }}>
         {data.headline}
       </h2>

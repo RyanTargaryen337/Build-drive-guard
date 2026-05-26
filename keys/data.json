@@ -6,7 +6,7 @@
     "author": "Precious-Ryan Ndubuisi",
     "role": "Independent Web3 & Fintech BD Consultant",
     "target_partner": "Bolt",
-    "version": "V1.0",
+    "version": "V1.1",
     "quarter": "Q2 2026",
     "confidentiality": "STRICTLY CONFIDENTIAL — FOR BOLT REVIEW ONLY"
   },
@@ -38,12 +38,51 @@
           ]
         }
       ],
+      "status_quo": {
+        "label": "What people do instead",
+        "workaround": "Two separate Bolt rides — one home, one back to retrieve the car in the morning.",
+        "cost_range": "₦16,000–30,000",
+        "keys_fare": "₦18,000",
+        "note": "Keys is price-competitive with the workaround, and removes the morning retrieval entirely."
+      },
+      "compound_insights": [
+        "The morning car retrieval is worse than the night ride — it's the more painful, underserved half of the problem.",
+        "People drive impaired because they don't trust an unknown Bolt driver with their keys — it's an identity trust problem, not a laziness problem.",
+        "Nobody plans to drink and drive. The decision happens in the car park at 1am when everyone else is leaving."
+      ],
       "insight": "And yet — no scaled, app-based designated-driver category exists anywhere on the continent.",
       "sources": ["WHO Global Status Report 2018", "RTMC 2023", "WHO Global Status Report 2023"]
     },
     {
       "id": 3,
       "numeral": "III",
+      "section": "Validation",
+      "headline": "We've lived this problem. Here's what we've observed.",
+      "archetype": {
+        "label": "Day-1 customer",
+        "profile": "30–45 entrepreneur, Lagos",
+        "description": "Owns a vehicle worth ₦8M–25M. Active in Victoria Island and Lekki nightlife 2–4 nights per month. Has tried the two-Bolt workaround. Trusts a vetted, named driver — not an anonymous platform stranger — to handle their keys.",
+        "why": "Owns the car. Cares about it. Has social capital to refer 3+ people after a single good experience. Present at the exact venues and hours where demand concentrates."
+      },
+      "observations": [
+        {
+          "label": "The retrieval problem is worse than the night ride",
+          "body": "Getting home is solved. Getting your car back at 9am from a venue 12 km away — with no breakfast, no ride, and a work call at 10 — is the part nobody talks about."
+        },
+        {
+          "label": "Trust blocks more decisions than price",
+          "body": "Handing a ₦15M SUV to an anonymous driver feels riskier than driving impaired. The barrier isn't cost awareness — it's identity verification at the moment of key handoff."
+        },
+        {
+          "label": "The decision happens at 1am in a car park",
+          "body": "Nobody plans to drink and drive. The decision is made when everyone else is leaving and there's no pre-booked alternative. Booking at 8pm (or a venue QR at the door) is the only intervention that works."
+        }
+      ],
+      "placeholder_note": "[ Customer validation quotes — in progress. Target: 10 conversations by end of June 2026. ]"
+    },
+    {
+      "id": 4,
+      "numeral": "IV",
       "section": "The Validated Model",
       "headline": "This isn't a thesis. China has been running it for a decade.",
       "model": {
@@ -62,8 +101,8 @@
       }
     },
     {
-      "id": 4,
-      "numeral": "IV",
+      "id": 5,
+      "numeral": "V",
       "section": "The Graveyard",
       "headline": "Why a dozen Western attempts have stalled.",
       "failures": [
@@ -87,8 +126,8 @@
       "pattern": "Three structural blockers in Western markets: (1) labor cost makes the human-driven-home model uneconomic vs Uber Black; (2) insurance liability for a non-owner driving an impaired customer's car is unsolved; (3) demand density never reaches the dispatch threshold. None of these apply with the same force in the African markets we target."
     },
     {
-      "id": 5,
-      "numeral": "V",
+      "id": 6,
+      "numeral": "VI",
       "section": "The Wedge",
       "headline": "Why Africa works where the West didn't.",
       "reasons": [
@@ -116,8 +155,8 @@
       "market": "Africa's ride-hailing market: USD 2.85B (2024) → USD 4.28B by 2032. Designated driving is the missing premium category in that growth."
     },
     {
-      "id": 6,
-      "numeral": "VI",
+      "id": 7,
+      "numeral": "VII",
       "section": "The Product",
       "headline": "What Keys actually is.",
       "steps": [
@@ -134,28 +173,51 @@
       ]
     },
     {
-      "id": 7,
-      "numeral": "VII",
-      "section": "The Moat",
-      "headline": "Insurance is the wall everyone else has hit. We build it first.",
-      "intro": "A third party driving an impaired customer's car is the single hardest legal/financial problem in this category. Every Western failure traces back here.",
-      "problem_items": [
-        "Owner's policy typically excludes non-named drivers",
-        "Claims for accidents during DD service are disputed",
-        "Damage to owner's vehicle creates immediate liability",
-        "Western markets: prohibitive premiums kill unit economics"
-      ],
-      "wedge_items": [
-        "Bespoke per-trip third-party-driver wrapper underwritten locally",
-        "Pricing: ₦300–800 per trip, embedded in fare (~5–8% of trip value)",
-        "Pre-ride 360° vehicle scan eliminates damage disputes",
-        "Underwriter targets: AXA Mansard, Leadway, Old Mutual, Britam"
-      ],
-      "moat_statement": "The underwriter relationship is a 2–3 year moat that a fast follower can't replicate in 90 days."
-    },
-    {
       "id": 8,
       "numeral": "VIII",
+      "section": "The Moat",
+      "headline": "Three structural advantages Bolt cannot replicate.",
+      "intro": "A fast follower can clone the app in 90 days. They cannot clone what the app builds over 24 months.",
+      "moat_layers": [
+        {
+          "numeral": "01",
+          "title": "Identity Graph",
+          "body": "Every completed trip adds a data point: which driver handled which keys, at what hour, at which venue, with what outcome. After 10,000 trips, you own the only verified driver-trust dataset in African nightlife. Bolt has ride ratings. You have key-handoff history. Those are different assets — and yours transfers directly to insurance underwriting.",
+          "bolt_cannot": "Bolt rates drivers on ride quality, not key custody. Retraining the data model requires starting over."
+        },
+        {
+          "numeral": "02",
+          "title": "Venue Distribution",
+          "body": "Once 50 clubs and hotels in Lagos put a Keys QR at the exit, you own the moment of demand. Bolt would need to negotiate the same 50 deals — and agree not to compete on standard rides (they won't). You offer venues a 5% referral commission per booking; Bolt's margin structure makes that structurally awkward.",
+          "bolt_cannot": "Bolt's incentives misalign with venue exclusivity. A venue partner who sends rides to Keys is also sending rides away from standard Bolt Economy."
+        },
+        {
+          "numeral": "03",
+          "title": "Liability Framework",
+          "body": "A licensed 'car custody' operator carries per-trip third-party-driver insurance that Bolt's ToS explicitly excludes. When FRSC formalises DUI checkpoints (it's coming), Keys is the compliant option. Bolt becomes the liability.",
+          "bolt_cannot": "Bolt's legal team will not accept liability for a non-Bolt vehicle driven by a third party. That constraint is structural, not fixable with a product update."
+        }
+      ],
+      "flywheel": "Trust data → insurance credibility → venue partnerships → more trip data → better matching → deeper trust data.",
+      "moat_statement": "The flywheel compounds. Each layer makes the next harder to replicate — and the data advantage widens every week you operate.",
+      "insurance_detail": {
+        "problem_items": [
+          "Owner's policy typically excludes non-named drivers",
+          "Claims for accidents during DD service are disputed",
+          "Damage to owner's vehicle creates immediate liability",
+          "Western markets: prohibitive premiums kill unit economics"
+        ],
+        "wedge_items": [
+          "Bespoke per-trip third-party-driver wrapper underwritten locally",
+          "Pricing: ₦300–800 per trip, embedded in fare (~5–8% of trip value)",
+          "Pre-ride 360° vehicle scan eliminates damage disputes",
+          "Underwriter targets: AXA Mansard, Leadway, Old Mutual, Britam"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "numeral": "IX",
       "section": "Why Bolt",
       "headline": "This pitch only makes sense to one partner.",
       "bolt_stats": [
@@ -172,24 +234,24 @@
       ]
     },
     {
-      "id": 9,
-      "numeral": "IX",
+      "id": 10,
+      "numeral": "X",
       "section": "Unit Economics",
       "headline": "What a single Keys trip looks like (Lagos baseline).",
       "rows": [
         { "item": "Average trip distance", "value": "12 km", "notes": "Victoria Island → Lekki / Ikoyi corridor" },
         { "item": "Average trip duration", "value": "45 min", "notes": "incl. driver pickup, drop, return e-bike" },
-        { "item": "Customer fare (target)", "value": "₦18,000", "notes": "≈ 3.5× standard Bolt economy" },
+        { "item": "Customer fare (target)", "value": "₦18,000", "notes": "≈ 1.6× standard Bolt economy — legible, defensible" },
         { "item": "Driver payout", "value": "₦10,800", "notes": "60% take rate — competitive vs alternatives" },
         { "item": "Insurance wrapper", "value": "₦600", "notes": "~3.3% of fare, embedded" },
         { "item": "Platform commission (Bolt + Keys)", "value": "₦4,200", "notes": "split 60/40 in favor of Bolt" },
         { "item": "Keys gross margin per trip", "value": "₦2,400", "notes": "~13% — scales with volume and bar partnerships", "highlight": true }
       ],
-      "footnote": "NGN baseline. Bar/restaurant referral commissions (~5%) treated as upside, not in baseline. Driver supply modelled on Bolt's 2025 Lagos rate cards; rate premium calibrated to pull existing Bolt drivers into weekend night shifts. Surge pricing applies for peak Fri/Sat 10pm–3am windows."
+      "footnote": "NGN baseline. 1.6× Bolt economy fare anchors the price on an existing mental model customers already trust. Bar/restaurant referral commissions (~5%) treated as upside, not in baseline. Driver supply modelled on Bolt's 2025 Lagos rate cards; rate premium calibrated to pull existing Bolt drivers into weekend night shifts. Surge pricing applies for peak Fri/Sat 10pm–3am windows."
     },
     {
-      "id": 10,
-      "numeral": "X",
+      "id": 11,
+      "numeral": "XI",
       "section": "Go-to-Market",
       "headline": "From Lagos to the Gulf in 24 months.",
       "phases": [
@@ -220,8 +282,8 @@
       ]
     },
     {
-      "id": 11,
-      "numeral": "XI",
+      "id": 12,
+      "numeral": "XII",
       "section": "Who's Building This",
       "headline": "Why this team is the right team for this market.",
       "founder": {
@@ -240,8 +302,8 @@
       ]
     },
     {
-      "id": 12,
-      "numeral": "XII",
+      "id": 13,
+      "numeral": "XIII",
       "section": "The Ask",
       "headline": "90 days. One city. One signed pilot.",
       "columns": [

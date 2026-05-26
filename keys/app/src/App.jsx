@@ -10,6 +10,7 @@ import HelpOverlay from './components/HelpOverlay'
 
 import CoverSlide from './slides/CoverSlide'
 import ProblemSlide from './slides/ProblemSlide'
+import ValidationSlide from './slides/ValidationSlide'
 import ModelSlide from './slides/ModelSlide'
 import GraveyardSlide from './slides/GraveyardSlide'
 import WedgeSlide from './slides/WedgeSlide'
@@ -22,7 +23,7 @@ import TeamSlide from './slides/TeamSlide'
 import AskSlide from './slides/AskSlide'
 
 const SLIDE_COMPONENTS = [
-  CoverSlide, ProblemSlide, ModelSlide, GraveyardSlide,
+  CoverSlide, ProblemSlide, ValidationSlide, ModelSlide, GraveyardSlide,
   WedgeSlide, ProductSlide, MoatSlide, WhyBoltSlide,
   EconomicsSlide, GTMSlide, TeamSlide, AskSlide,
 ]

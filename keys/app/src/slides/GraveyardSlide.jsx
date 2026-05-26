@@ -1,7 +1,7 @@
 export default function GraveyardSlide({ data }) {
   return (
     <>
-      <div className="sec-label">IV · The Graveyard</div>
+      <div className="sec-label">{data.numeral} · {data.section}</div>
       <h2 className="hl" style={{ maxWidth: '580px' }}>
         {data.headline}
       </h2>

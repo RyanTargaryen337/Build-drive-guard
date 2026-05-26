@@ -1,29 +1,25 @@
 export default function MoatSlide({ data }) {
   return (
     <>
-      <div className="sec-label">VII · The Moat</div>
+      <div className="sec-label">{data.numeral} · {data.section}</div>
       <h2 className="hl">{data.headline}</h2>
-      <p className="sub" style={{ marginBottom: '3vh' }}>
-        {data.intro}
-      </p>
-      <div className="moat-grid">
-        <div className="moat-col">
-          <div className="moat-col-lbl">The Problem</div>
-          <ul className="moat-list">
-            {data.problem_items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="moat-col">
-          <div className="moat-col-lbl">Our Wedge</div>
-          <ul className="moat-list ok">
-            {data.wedge_items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
+      <p className="sub" style={{ marginBottom: '2.5vh' }}>{data.intro}</p>
+
+      <div className="moat3-grid">
+        {data.moat_layers.map((layer) => (
+          <div key={layer.numeral} className="moat3-card">
+            <div className="moat3-num">{layer.numeral}</div>
+            <div className="moat3-title">{layer.title}</div>
+            <div className="moat3-body">{layer.body}</div>
+            <div className="moat3-cannot">
+              <span className="moat3-cannot-label">Bolt cannot: </span>
+              {layer.bolt_cannot}
+            </div>
+          </div>
+        ))}
       </div>
+
+      <div className="moat-flywheel">{data.flywheel}</div>
       <div className="moat-cta">{data.moat_statement}</div>
     </>
   )

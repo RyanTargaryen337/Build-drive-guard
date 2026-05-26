@@ -1,7 +1,7 @@
 export default function EconomicsSlide({ data }) {
   return (
     <>
-      <div className="sec-label">IX · Unit Economics</div>
+      <div className="sec-label">{data.numeral} · {data.section}</div>
       <h2 className="hl">
         {data.headline.split('(')[0]}
         <span className="muted-c" style={{ fontSize: '.72em', fontWeight: 400 }}>
