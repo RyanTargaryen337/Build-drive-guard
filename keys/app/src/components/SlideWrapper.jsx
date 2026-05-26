@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function SlideWrapper({ isActive, children }) {
+export default function SlideWrapper({ isActive, printing, children }) {
   const [state, setState] = useState(isActive ? 'active' : 'hidden')
   const prev = useRef(isActive)
 
@@ -16,6 +16,11 @@ export default function SlideWrapper({ isActive, children }) {
       return () => clearTimeout(t)
     }
   }, [isActive])
+
+  // Render all slides during print regardless of active state
+  if (printing) {
+    return <div className="print-slide">{children}</div>
+  }
 
   if (state === 'hidden') return null
 
