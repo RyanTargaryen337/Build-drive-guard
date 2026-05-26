@@ -1,7 +1,7 @@
 export default function WedgeSlide({ data }) {
   return (
     <>
-      <div className="sec-label">V · The Wedge</div>
+      <div className="sec-label">{data.numeral} · {data.section}</div>
       <h2 className="hl" style={{ marginBottom: '2vh' }}>
         {data.headline}
       </h2>

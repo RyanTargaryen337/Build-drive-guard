@@ -1,7 +1,7 @@
 export default function GTMSlide({ data }) {
   return (
     <>
-      <div className="sec-label">X · Go-to-Market</div>
+      <div className="sec-label">{data.numeral} · {data.section}</div>
       <h2 className="hl">{data.headline}</h2>
       <div className="phases">
         {data.phases.map((p) => (

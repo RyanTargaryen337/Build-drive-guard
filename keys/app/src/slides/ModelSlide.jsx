@@ -2,7 +2,7 @@ export default function ModelSlide({ data }) {
   const { model } = data
   return (
     <>
-      <div className="sec-label">III · The Validated Model</div>
+      <div className="sec-label">{data.numeral} · {data.section}</div>
       <h2 className="hl">{data.headline}</h2>
       <div className="model-grid">
         <div>

@@ -1,7 +1,7 @@
 export default function ProductSlide({ data }) {
   return (
     <>
-      <div className="sec-label">VI · The Product</div>
+      <div className="sec-label">{data.numeral} · {data.section}</div>
       <h2 className="hl" style={{ marginBottom: '2vh' }}>
         {data.headline}
       </h2>
