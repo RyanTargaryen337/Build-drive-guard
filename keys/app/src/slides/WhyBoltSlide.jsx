@@ -21,6 +21,17 @@ export default function WhyBoltSlide({ data }) {
           </div>
         ))}
       </div>
+
+      {data.inversion_block && (
+        <div className="inversion-block">
+          <div className="inversion-label">{data.inversion_block.label}</div>
+          <div className="inversion-items">
+            {data.inversion_block.reasons.map((r, i) => (
+              <div key={i} className="inversion-item">{r}</div>
+            ))}
+          </div>
+        </div>
+      )}
     </>
   )
 }

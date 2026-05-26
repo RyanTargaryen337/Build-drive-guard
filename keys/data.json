@@ -231,7 +231,15 @@
         { "title": "Activates the $104M safety mandate", "body": "Bolt's own commitment makes this strategically pre-approved. Keys is the most concrete way to demonstrate DUI reduction in market." },
         { "title": "Unlocks the alcohol industry as a partner", "body": "Diageo, Pernod Ricard, Heineken all run DUI-prevention CSR budgets in Africa. Keys is the channel they've been waiting for." },
         { "title": "Locks in higher-LTV riders", "body": "Car owners using designated driving are upper-middle-class repeat customers — exactly the cohort Bolt is competing for." }
-      ]
+      ],
+      "inversion_block": {
+        "label": "Why Bolt won't build this internally",
+        "reasons": [
+          "Bolt's ToS explicitly excludes third-party key custody — renegotiating that insurance position takes 12–18 months of legal lift.",
+          "Driver identity data (10,000+ verified key-handoff events) cannot be bootstrapped. It accumulates one trip at a time.",
+          "Designated driving is a liability centre for a platform operator. It's a revenue centre for a specialist. That incentive gap is structural."
+        ]
+      }
     },
     {
       "id": 10,
