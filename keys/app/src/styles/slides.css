@@ -152,3 +152,45 @@
 .ask-items li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: .85em; top: .05em; }
 .ask-items.tl li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); top: 6px; }
 .ask-contact { margin-top: auto; padding-top: 2vh; border-top: 1px solid var(--border); font-size: clamp(9px, .75vw, 11.5px); color: var(--muted); }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — 300% ZOOM / NARROW VIEWPORT
+   Breakpoint at 900px catches ~300% zoom on a 1280px monitor.
+   Breakpoint at 580px catches ~300% zoom on a 720p display.
+═══════════════════════════════════════ */
+@media (max-width: 900px) {
+  /* 4-col → 2-col */
+  .bolt-stats { grid-template-columns: 1fr 1fr; }
+  .phases { grid-template-columns: 1fr 1fr; }
+  /* 5-col → 3-col */
+  .steps-row { grid-template-columns: repeat(3, 1fr); }
+  /* 3-col → 2-col */
+  .layers-row { grid-template-columns: 1fr 1fr; }
+  .hires-row { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 580px) {
+  /* All multi-col grids collapse to 1-col */
+  .stats-grid,
+  .model-grid,
+  .wedge-grid,
+  .moat-grid,
+  .fit-grid,
+  .ask-cols,
+  .bolt-stats,
+  .phases,
+  .steps-row,
+  .layers-row,
+  .hires-row { grid-template-columns: 1fr; }
+
+  /* Team founder layout stacks */
+  .founder-block { grid-template-columns: 1fr; gap: 1.5vh; }
+
+  /* Stat numbers scale down at small sizes */
+  .stat-num { font-size: clamp(28px, 10vw, 56px) !important; }
+  .bolt-val { font-size: clamp(20px, 8vw, 36px) !important; }
+  .ask-hl { font-size: clamp(28px, 8vw, 54px); }
+
+  /* Give cover more breathing room */
+  .cover-author { position: static; text-align: left; margin-top: 3vh; }
+}
