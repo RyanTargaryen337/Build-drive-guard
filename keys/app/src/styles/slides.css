@@ -100,6 +100,12 @@
 .val-obs-label { font-family: 'Space Grotesk', sans-serif; font-size: .54rem; letter-spacing: .1em; font-weight: 600; color: var(--text); margin-bottom: .6vh; }
 .val-obs-body { font-size: clamp(10px, .82vw, 13px); color: rgba(237,232,220,.55); line-height: 1.6; }
 .val-placeholder { margin-top: auto; font-size: clamp(9px, .75vw, 11px); color: var(--muted); border: 1px dashed rgba(255,255,255,.12); padding: 1.2vh 1.5vw; font-style: italic; }
+.val-customer-voice { margin-top: 2vh; padding: 2vh 2.5vw; border-left: 2px solid var(--gold); background: rgba(201,168,76,.04); max-width: 100%; }
+.val-cv-quote { font-size: clamp(12px, 1vw, 15px); font-style: italic; color: var(--text); line-height: 1.65; margin-bottom: 1.2vh; }
+.val-cv-meta { display: flex; align-items: center; gap: 1vw; margin-bottom: .8vh; }
+.val-cv-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(11px, .9vw, 14px); font-weight: 700; color: var(--gold); }
+.val-cv-profile { font-size: clamp(9px, .75vw, 12px); color: var(--muted); }
+.val-cv-why { font-size: clamp(9px, .76vw, 12px); color: var(--green); line-height: 1.55; }
 
 /* ═══════════════════════════════════════
    SLIDE 8 · MOAT (3-layer)
