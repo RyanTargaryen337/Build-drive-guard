@@ -22,6 +22,17 @@ export default function ValidationSlide({ data }) {
         </div>
       </div>
 
+      {data.customer_voice && (
+        <div className="val-customer-voice">
+          <div className="val-cv-quote">"{data.customer_voice.quote}"</div>
+          <div className="val-cv-meta">
+            <span className="val-cv-name">{data.customer_voice.name}</span>
+            <span className="val-cv-profile">{data.customer_voice.profile}</span>
+          </div>
+          <div className="val-cv-why">{data.customer_voice.why_it_matters}</div>
+        </div>
+      )}
+
       {data.placeholder_note && (
         <div className="val-placeholder">{data.placeholder_note}</div>
       )}

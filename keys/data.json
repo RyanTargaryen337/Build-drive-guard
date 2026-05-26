@@ -78,7 +78,13 @@
           "body": "Nobody plans to drink and drive. The decision is made when everyone else is leaving and there's no pre-booked alternative. Booking at 8pm (or a venue QR at the door) is the only intervention that works."
         }
       ],
-      "placeholder_note": "[ Customer validation quotes — in progress. Target: 10 conversations by end of June 2026. ]"
+      "customer_voice": {
+        "name": "Tina",
+        "profile": "30s, Lagos entrepreneur, regular at VI and Lekki venues",
+        "quote": "I love to go out. But at 2am, every checkpoint feels personal. I'd rather pay someone I trust to drive me home in my own car than explain myself to the police with wine on my breath.",
+        "why_it_matters": "Tina isn't afraid of an accident. She's afraid of the checkpoint. That's FRSC enforcement creating demand — exactly the tailwind we're riding."
+      },
+      "placeholder_note": null
     },
     {
       "id": 4,
