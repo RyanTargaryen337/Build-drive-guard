@@ -1,0 +1,354 @@
+{
+  "meta": {
+    "title": "KEYS",
+    "tagline": "Africa's designated driver network.",
+    "description": "A category infrastructure play for Bolt — built on the validated billion-dollar model from China, adapted for the markets where it actually works.",
+    "author": "Precious-Ryan Ndubuisi",
+    "role": "Independent Web3 & Fintech BD Consultant",
+    "target_partner": "Bolt",
+    "version": "V1.1",
+    "quarter": "Q2 2026",
+    "confidentiality": "STRICTLY CONFIDENTIAL — FOR BOLT REVIEW ONLY"
+  },
+  "slides": [
+    {
+      "id": 1,
+      "numeral": "I",
+      "section": "Cover",
+      "title": "Africa's designated driver network.",
+      "subtitle": "A category infrastructure play for Bolt — built on the validated billion-dollar model from China, adapted for the markets where it actually works."
+    },
+    {
+      "id": 2,
+      "numeral": "II",
+      "section": "The Problem",
+      "headline": "Africa is the worst place in the world to drink and drive.",
+      "regions": [
+        {
+          "name": "South Africa",
+          "stats": [
+            { "value": "58%", "label": "of road deaths involve alcohol — nearly 3× the global average of 20%" },
+            { "value": "R18.2B", "label": "annual economic cost of alcohol-related crashes" }
+          ]
+        },
+        {
+          "name": "Nigeria",
+          "stats": [
+            { "value": "21.4", "label": "road deaths per 100,000 people — among Africa's worst, weak DUI enforcement, no scalable alternative" }
+          ]
+        }
+      ],
+      "status_quo": {
+        "label": "What people do instead",
+        "workaround": "Two separate Bolt rides — one home, one back to retrieve the car in the morning.",
+        "cost_range": "₦16,000–30,000",
+        "keys_fare": "₦18,000",
+        "note": "Keys is price-competitive with the workaround, and removes the morning retrieval entirely."
+      },
+      "compound_insights": [
+        "The morning car retrieval is worse than the night ride — it's the more painful, underserved half of the problem.",
+        "People drive impaired because they don't trust an unknown Bolt driver with their keys — it's an identity trust problem, not a laziness problem.",
+        "Nobody plans to drink and drive. The decision happens in the car park at 1am when everyone else is leaving."
+      ],
+      "insight": "And yet — no scaled, app-based designated-driver category exists anywhere on the continent.",
+      "sources": ["WHO Global Status Report 2018", "RTMC 2023", "WHO Global Status Report 2023"]
+    },
+    {
+      "id": 3,
+      "numeral": "III",
+      "section": "Validation",
+      "headline": "We've lived this problem. Here's what we've observed.",
+      "archetype": {
+        "label": "Day-1 customer",
+        "profile": "30–45 entrepreneur, Lagos",
+        "description": "Owns a vehicle worth ₦8M–25M. Active in Victoria Island and Lekki nightlife 2–4 nights per month. Has tried the two-Bolt workaround. Trusts a vetted, named driver — not an anonymous platform stranger — to handle their keys.",
+        "why": "Owns the car. Cares about it. Has social capital to refer 3+ people after a single good experience. Present at the exact venues and hours where demand concentrates."
+      },
+      "observations": [
+        {
+          "label": "The retrieval problem is worse than the night ride",
+          "body": "Getting home is solved. Getting your car back at 9am from a venue 12 km away — with no breakfast, no ride, and a work call at 10 — is the part nobody talks about."
+        },
+        {
+          "label": "Trust blocks more decisions than price",
+          "body": "Handing a ₦15M SUV to an anonymous driver feels riskier than driving impaired. The barrier isn't cost awareness — it's identity verification at the moment of key handoff."
+        },
+        {
+          "label": "The decision happens at 1am in a car park",
+          "body": "Nobody plans to drink and drive. The decision is made when everyone else is leaving and there's no pre-booked alternative. Booking at 8pm (or a venue QR at the door) is the only intervention that works."
+        }
+      ],
+      "customer_voice": {
+        "name": "Tina",
+        "profile": "30s, Lagos entrepreneur, regular at VI and Lekki venues",
+        "quote": "I love to go out. But at 2am, every checkpoint feels personal. I'd rather pay someone I trust to drive me home in my own car than explain myself to the police with wine on my breath.",
+        "why_it_matters": "Tina isn't afraid of an accident. She's afraid of the checkpoint. That's FRSC enforcement creating demand — exactly the tailwind we're riding."
+      },
+      "placeholder_note": null
+    },
+    {
+      "id": 4,
+      "numeral": "IV",
+      "section": "The Validated Model",
+      "headline": "This isn't a thesis. China has been running it for a decade.",
+      "model": {
+        "name": "Daijia",
+        "chinese": "代驾",
+        "tagline": "Designated driving on demand.",
+        "how_it_works": "A driver arrives at your location on a foldable e-bike, stows it in your trunk, and drives you home in your own car. You pay through the app.",
+        "why_it_works": "Zero fleet cost. The user keeps their car. The driver pool is decoupled from vehicle ownership. Unit economics survive in markets where labor is cheap relative to private vehicle cost.",
+        "stats": [
+          { "label": "Launched", "value": "July 2015" },
+          { "label": "Operator", "value": "Didi Daijia (Didi Chuxing)" },
+          { "label": "Cities", "value": "~200 in China" },
+          { "label": "Consolidation", "value": "Didi acq. E-Daijia (Aug 2022)" },
+          { "label": "Global CAGR", "value": "5%+ (2023–2030)" }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "numeral": "V",
+      "section": "The Graveyard",
+      "headline": "Why a dozen Western attempts have stalled.",
+      "failures": [
+        {
+          "name": "BeMyDD",
+          "note": "US designated-driver app, ~2010s. Failed to reach unit economics in suburban markets — driver dispatch cost exceeded rider willingness to pay."
+        },
+        {
+          "name": "Dryver",
+          "note": "Still operating in select US cities, but stayed regional. Could not break out of franchise model."
+        },
+        {
+          "name": "STEER",
+          "note": "App-based DD service. Quiet exit; could not solve insurance liability at scale."
+        },
+        {
+          "name": "Designated Driver Inc. → To Arrive Alive (Canada)",
+          "note": "Acquired in 2022. Consolidation play, not a growth story."
+        }
+      ],
+      "pattern": "Three structural blockers in Western markets: (1) labor cost makes the human-driven-home model uneconomic vs Uber Black; (2) insurance liability for a non-owner driving an impaired customer's car is unsolved; (3) demand density never reaches the dispatch threshold. None of these apply with the same force in the African markets we target."
+    },
+    {
+      "id": 6,
+      "numeral": "VI",
+      "section": "The Wedge",
+      "headline": "Why Africa works where the West didn't.",
+      "reasons": [
+        {
+          "numeral": "i.",
+          "title": "Labor economics flip the model",
+          "body": "A Bolt driver in Lagos earns ~₦8,000–15,000/day. A premium per-trip rate of ₦12,000–20,000 for a 45-minute drive-home job pulls supply without subsidies — impossible math in London or LA."
+        },
+        {
+          "numeral": "ii.",
+          "title": "Concentrated nightlife corridors",
+          "body": "Victoria Island + Lekki (Lagos), Sandton + Rosebank (JoBurg), Westlands + Kilimani (Nairobi). Dense demand within 5–8 km radii — exactly the geography daijia needs."
+        },
+        {
+          "numeral": "iii.",
+          "title": "Enforcement is rising, fast",
+          "body": "FRSC ramping DUI checkpoints. SA's National Road Traffic Amendment Act lowered BAC to 0.00. Government tailwind without government dependency."
+        },
+        {
+          "numeral": "iv.",
+          "title": "Bolt is already there",
+          "body": "60%+ market share in Nigeria. Leader in 5 African markets. $104M committed to Africa safety initiatives over 3 years (Nov 2024). The distribution rail is built."
+        }
+      ],
+      "market": "Africa's ride-hailing market: USD 2.85B (2024) → USD 4.28B by 2032. Designated driving is the missing premium category in that growth."
+    },
+    {
+      "id": 7,
+      "numeral": "VII",
+      "section": "The Product",
+      "headline": "What Keys actually is.",
+      "steps": [
+        { "n": 1, "title": "Request", "body": "User opens Bolt. Taps 'Keys' category (new tab next to Economy / Comfort)." },
+        { "n": 2, "title": "Match", "body": "Certified Keys driver dispatched on foldable e-bike. ETA shown live." },
+        { "n": 3, "title": "Verify", "body": "Driver arrives. Pre-ride 360° vehicle scan via app for damage protection." },
+        { "n": 4, "title": "Drive", "body": "E-bike folds into trunk. Driver takes user home in user's own car." },
+        { "n": 5, "title": "Settle", "body": "Drop-off, photo confirmation, payment via Bolt wallet. Driver e-bikes back out." }
+      ],
+      "layers": [
+        { "name": "Driver Layer", "body": "Recruitment, training, certification, background checks, e-bike supply." },
+        { "name": "Insurance Layer", "body": "Per-trip third-party-driver policy structured with a local underwriter." },
+        { "name": "Ops Layer", "body": "Dispatch, routing, bar/restaurant partnerships, claims, support." }
+      ]
+    },
+    {
+      "id": 8,
+      "numeral": "VIII",
+      "section": "The Moat",
+      "headline": "Three structural advantages Bolt cannot replicate.",
+      "intro": "A fast follower can clone the app in 90 days. They cannot clone what the app builds over 24 months.",
+      "moat_layers": [
+        {
+          "numeral": "01",
+          "title": "Identity Graph",
+          "body": "Every completed trip adds a data point: which driver handled which keys, at what hour, at which venue, with what outcome. After 10,000 trips, you own the only verified driver-trust dataset in African nightlife. Bolt has ride ratings. You have key-handoff history. Those are different assets — and yours transfers directly to insurance underwriting.",
+          "bolt_cannot": "Bolt rates drivers on ride quality, not key custody. Retraining the data model requires starting over."
+        },
+        {
+          "numeral": "02",
+          "title": "Venue Distribution",
+          "body": "Once 50 clubs and hotels in Lagos put a Keys QR at the exit, you own the moment of demand. Bolt would need to negotiate the same 50 deals — and agree not to compete on standard rides (they won't). You offer venues a 5% referral commission per booking; Bolt's margin structure makes that structurally awkward.",
+          "bolt_cannot": "Bolt's incentives misalign with venue exclusivity. A venue partner who sends rides to Keys is also sending rides away from standard Bolt Economy."
+        },
+        {
+          "numeral": "03",
+          "title": "Liability Framework",
+          "body": "A licensed 'car custody' operator carries per-trip third-party-driver insurance that Bolt's ToS explicitly excludes. When FRSC formalises DUI checkpoints (it's coming), Keys is the compliant option. Bolt becomes the liability.",
+          "bolt_cannot": "Bolt's legal team will not accept liability for a non-Bolt vehicle driven by a third party. That constraint is structural, not fixable with a product update."
+        }
+      ],
+      "flywheel": "Trust data → insurance credibility → venue partnerships → more trip data → better matching → deeper trust data.",
+      "moat_statement": "The flywheel compounds. Each layer makes the next harder to replicate — and the data advantage widens every week you operate.",
+      "insurance_detail": {
+        "problem_items": [
+          "Owner's policy typically excludes non-named drivers",
+          "Claims for accidents during DD service are disputed",
+          "Damage to owner's vehicle creates immediate liability",
+          "Western markets: prohibitive premiums kill unit economics"
+        ],
+        "wedge_items": [
+          "Bespoke per-trip third-party-driver wrapper underwritten locally",
+          "Pricing: ₦300–800 per trip, embedded in fare (~5–8% of trip value)",
+          "Pre-ride 360° vehicle scan eliminates damage disputes",
+          "Underwriter targets: AXA Mansard, Leadway, Old Mutual, Britam"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "numeral": "IX",
+      "section": "Why Bolt",
+      "headline": "This pitch only makes sense to one partner.",
+      "bolt_stats": [
+        { "value": "#1", "label": "Market position across 5 African markets" },
+        { "value": "60%", "label": "Market share in Nigeria, Africa's largest economy" },
+        { "value": "$104M", "label": "Committed to Africa safety initiatives, 3 years (Nov 2024)" },
+        { "value": "€1.7B", "label": "Global revenue (2023) · 200M+ users worldwide" }
+      ],
+      "strategic_fit": [
+        { "title": "Defends premium segment", "body": "Uber's Africa play has been a steady push into Comfort/XL/EV. Keys gives Bolt a category Uber can't match without 12+ months of build." },
+        { "title": "Activates the $104M safety mandate", "body": "Bolt's own commitment makes this strategically pre-approved. Keys is the most concrete way to demonstrate DUI reduction in market." },
+        { "title": "Unlocks the alcohol industry as a partner", "body": "Diageo, Pernod Ricard, Heineken all run DUI-prevention CSR budgets in Africa. Keys is the channel they've been waiting for." },
+        { "title": "Locks in higher-LTV riders", "body": "Car owners using designated driving are upper-middle-class repeat customers — exactly the cohort Bolt is competing for." }
+      ],
+      "inversion_block": {
+        "label": "Why Bolt won't build this internally",
+        "reasons": [
+          "Bolt's ToS explicitly excludes third-party key custody — renegotiating that insurance position takes 12–18 months of legal lift.",
+          "Driver identity data (10,000+ verified key-handoff events) cannot be bootstrapped. It accumulates one trip at a time.",
+          "Designated driving is a liability centre for a platform operator. It's a revenue centre for a specialist. That incentive gap is structural."
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "numeral": "X",
+      "section": "Unit Economics",
+      "headline": "What a single Keys trip looks like (Lagos baseline).",
+      "rows": [
+        { "item": "Average trip distance", "value": "12 km", "notes": "Victoria Island → Lekki / Ikoyi corridor" },
+        { "item": "Average trip duration", "value": "45 min", "notes": "incl. driver pickup, drop, return e-bike" },
+        { "item": "Customer fare (target)", "value": "₦18,000", "notes": "≈ 1.6× standard Bolt economy — legible, defensible" },
+        { "item": "Driver payout", "value": "₦10,800", "notes": "60% take rate — competitive vs alternatives" },
+        { "item": "Insurance wrapper", "value": "₦600", "notes": "~3.3% of fare, embedded" },
+        { "item": "Platform commission (Bolt + Keys)", "value": "₦4,200", "notes": "split 60/40 in favor of Bolt" },
+        { "item": "Keys gross margin per trip", "value": "₦2,400", "notes": "~13% — scales with volume and bar partnerships", "highlight": true }
+      ],
+      "footnote": "NGN baseline. 1.6× Bolt economy fare anchors the price on an existing mental model customers already trust. Bar/restaurant referral commissions (~5%) treated as upside, not in baseline. Driver supply modelled on Bolt's 2025 Lagos rate cards; rate premium calibrated to pull existing Bolt drivers into weekend night shifts. Surge pricing applies for peak Fri/Sat 10pm–3am windows."
+    },
+    {
+      "id": 11,
+      "numeral": "XI",
+      "section": "Go-to-Market",
+      "headline": "From Lagos to the Gulf in 24 months.",
+      "phases": [
+        {
+          "numeral": "i.",
+          "period": "Months 0–6",
+          "title": "Lagos Pilot",
+          "detail": "VI + Lekki + Ikoyi only. 50 trained drivers. Underwriter agreement signed. 8 launch venue partners (Quilox, Hard Rock, RSVP, etc.). Target: 2,000 completed trips, sub-2% incident rate."
+        },
+        {
+          "numeral": "ii.",
+          "period": "Months 6–12",
+          "title": "Lagos Scale + Johannesburg",
+          "detail": "Lagos to 200+ drivers. Sandton/Rosebank launch, partnering with Bolt SA. SA insurance product (RTMC-aligned). 12,000 cumulative trips."
+        },
+        {
+          "numeral": "iii.",
+          "period": "Months 12–18",
+          "title": "Nairobi + Cape Town",
+          "detail": "Westlands launch. Cape Town V&A corridor. Multi-country ops playbook locked. First alcohol-brand sponsorship contract (Diageo / Pernod Ricard)."
+        },
+        {
+          "numeral": "iv.",
+          "period": "Months 18–24",
+          "title": "Gulf Expansion",
+          "detail": "Dubai pilot — exact unit economics fit (cheap labor + expensive cars + strict DUI). Bolt entered Dubai Dec 2024; Keys becomes the safety-led differentiator vs Careem."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "numeral": "XII",
+      "section": "Who's Building This",
+      "headline": "Why this team is the right team for this market.",
+      "founder": {
+        "name": "Precious-Ryan Ndubuisi",
+        "title": "Founder & CEO",
+        "bio": [
+          "5+ years institutional crypto, DeFi, and cross-chain BD — Copper.co, Contango, Router Protocol, Meson Finance, Staked (Kraken), Quranium, FD Labs",
+          "Current mandate: BD lead at Architect Exchange (BMA-regulated; backed by MIAX, Galaxy, ARK, VanEck) — sourcing market makers for NGN/KES/UGX pairs",
+          "Network across African fintech, mobility, regulators, and underwriters; original concept design & regional adaptation for this category"
+        ]
+      },
+      "hires": [
+        { "title": "Head of Operations, Lagos", "description": "Ex-Bolt / Uber GM-level. Driver supply, dispatch, training." },
+        { "title": "Head of Insurance & Risk", "description": "Ex-AXA Mansard / Leadway. Underwriter relationship lead." },
+        { "title": "Head of Venue Partnerships", "description": "Hospitality industry insider. Bar/restaurant deals." }
+      ]
+    },
+    {
+      "id": 13,
+      "numeral": "XIII",
+      "section": "The Ask",
+      "headline": "90 days. One city. One signed pilot.",
+      "columns": [
+        {
+          "title": "What We Want From Bolt",
+          "items": [
+            "Lagos exclusivity for the Keys category, 24 months",
+            "Integration of Keys as an in-app category (Economy / Comfort / Keys)",
+            "$1.5M pilot capital — driver onboarding, e-bike fleet, insurance float",
+            "Joint exec sponsor (Bolt Africa GM)"
+          ]
+        },
+        {
+          "title": "What Bolt Gets",
+          "items": [
+            "60% of platform commission",
+            "Category exclusivity vs Uber, inDrive, Yango in target markets",
+            "Branded co-launch under Bolt's existing safety mandate",
+            "Right of first refusal on equity in NewCo at next round"
+          ]
+        },
+        {
+          "title": "What Happens Next",
+          "items": [
+            "Week 1–2: NDA + term sheet",
+            "Week 3–6: Underwriter LOI + venue partner LOIs",
+            "Week 7–10: Driver recruitment + app integration",
+            "Week 11–12: Soft launch, VI/Lekki only"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KEYS — Pitch Deck · Q2 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080808;
+  --surface: #111110;
+  --border: rgba(201,168,76,.14);
+  --gold: #C9A84C;
+  --gold2: #DFC072;
+  --text: #EDE8DC;
+  --muted: #68665E;
+  --danger: #D14535;
+  --green: #4A9B6A;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* Shell */
+#pres { position: relative; width: 100vw; height: 100vh; overflow: hidden; cursor: default; }
+
+/* Progress */
+.pb { position: fixed; bottom: 0; left: 0; right: 0; height: 2px; background: rgba(255,255,255,.05); z-index: 100; }
+.pb-fill { height: 100%; background: var(--gold); transition: width .4s ease; width: 0; }
+
+/* Counter */
+.ctr { position: fixed; bottom: 16px; right: 28px; font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: .12em; color: var(--muted); z-index: 100; user-select: none; }
+
+/* Nav arrows */
+.nav { position: fixed; top: 0; height: 100%; width: 18%; z-index: 50; border: 0; background: transparent; display: flex; align-items: center; opacity: 0; transition: opacity .2s; cursor: pointer; }
+.nav:hover { opacity: 1; }
+.nav-prev { left: 0; justify-content: flex-start; padding-left: 20px; }
+.nav-next { right: 0; justify-content: flex-end; padding-right: 20px; }
+.nav svg { width: 26px; height: 26px; color: var(--gold); }
+
+/* Slides */
+.slide {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  padding: 5vh 7vw;
+  opacity: 0; pointer-events: none;
+  transition: opacity .38s ease, transform .38s ease;
+  transform: translateX(36px);
+  will-change: opacity, transform;
+}
+.slide.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+.slide.out { opacity: 0; transform: translateX(-36px); transition-duration: .3s; }
+
+/* Print */
+@media print {
+  html, body { overflow: visible; height: auto; }
+  #pres { overflow: visible; height: auto; }
+  .pb, .ctr, .nav { display: none; }
+  .slide { position: relative; inset: auto; opacity: 1; pointer-events: all; transform: none; height: 100vh; page-break-after: always; }
+  .slide:last-child { page-break-after: avoid; }
+}
+
+/* Common */
+.sec-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 4vh;
+  display: flex; align-items: center; gap: 14px;
+}
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 100px; }
+h1.hero {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(80px, 12vw, 170px);
+  font-weight: 900; line-height: .88; letter-spacing: -.04em; color: var(--text);
+}
+h2.hl {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 50px);
+  font-weight: 700; line-height: 1.18; margin-bottom: 3vh; max-width: 800px;
+}
+.sub { font-size: clamp(12px, 1vw, 16px); color: rgba(237,232,220,.6); line-height: 1.65; max-width: 640px; }
+.gold { color: var(--gold); }
+.muted-c { color: var(--muted); }
+
+/* ========= SLIDE 1: COVER ========= */
+.s-cover { justify-content: center; align-items: flex-start; }
+.cover-eye { font-family: 'Space Grotesk', sans-serif; font-size: .58rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 5vh; }
+.cover-line { width: 56px; height: 2px; background: var(--gold); margin: 3.5vh 0; }
+.cover-tag { font-size: clamp(15px, 1.5vw, 22px); font-weight: 300; color: var(--text); max-width: 560px; line-height: 1.5; margin-bottom: 1.5vh; }
+.cover-sub2 { font-size: clamp(11px, .9vw, 14px); color: rgba(237,232,220,.45); max-width: 500px; line-height: 1.7; }
+.cover-author { position: absolute; bottom: 5vh; right: 7vw; text-align: right; }
+.cover-author .au-name { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; color: var(--text); }
+.cover-author .au-role { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+/* ========= SLIDE 2: PROBLEM ========= */
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8vw; margin-top: 1.5vh; max-width: 880px; }
+.stat-block { border: 1px solid var(--border); padding: 2.8vh 2.2vw; }
+.stat-region { font-family: 'Space Grotesk', sans-serif; font-size: .56rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 2vh; }
+.stat-row { display: flex; align-items: baseline; gap: 1.4vw; margin-bottom: 1.8vh; }
+.stat-row:last-child { margin-bottom: 0; }
+.stat-num { font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 4.8vw, 72px); font-weight: 700; color: var(--gold); line-height: 1; flex-shrink: 0; }
+.stat-desc { font-size: clamp(10px, .85vw, 13px); color: rgba(237,232,220,.55); line-height: 1.55; max-width: 200px; }
+.status-quo-strip { margin-top: 2vh; padding: 1.6vh 2vw; background: rgba(201,168,76,.04); border-left: 2px solid var(--gold); max-width: 880px; display: flex; gap: 3vw; align-items: baseline; }
+.sq-label { font-family: 'Space Grotesk', sans-serif; font-size: .52rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
+.sq-body { font-size: clamp(10px, .83vw, 13px); color: rgba(237,232,220,.65); line-height: 1.6; }
+.sq-body strong { color: var(--gold); }
+.compound-list { margin-top: 1.5vh; display: flex; flex-direction: column; gap: .8vh; max-width: 880px; }
+.compound-item { font-size: clamp(10px, .78vw, 12px); color: rgba(237,232,220,.48); line-height: 1.55; padding-left: 1.2em; position: relative; }
+.compound-item::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+.insight { margin-top: auto; padding: 2vh 2.5vw; border-left: 2px solid var(--gold); font-size: clamp(12px, 1vw, 15px); font-style: italic; color: rgba(237,232,220,.75); max-width: 720px; }
+
+/* ========= SLIDE 3: VALIDATION ========= */
+.val-grid { display: grid; grid-template-columns: 260px 1fr; gap: 3vw; margin-top: 1vh; flex: 1; align-items: start; }
+.val-archetype { border: 1px solid rgba(201,168,76,.3); background: rgba(201,168,76,.04); padding: 2.2vh 1.8vw; }
+.val-arch-label { font-family: 'Space Grotesk', sans-serif; font-size: .5rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1vh; }
+.val-arch-profile { font-family: 'Space Grotesk', sans-serif; font-size: clamp(12px, 1vw, 16px); font-weight: 600; color: var(--text); margin-bottom: 1.2vh; }
+.val-arch-desc { font-size: clamp(9px, .77vw, 12px); color: rgba(237,232,220,.6); line-height: 1.62; margin-bottom: 1.2vh; }
+.val-arch-why { font-size: clamp(9px, .75vw, 12px); color: var(--green); line-height: 1.55; }
+.val-observations { display: flex; flex-direction: column; gap: 1.2vh; }
+.val-obs-item { border-bottom: 1px solid var(--border); padding-bottom: 1.2vh; }
+.val-obs-item:last-child { border-bottom: 0; }
+.val-obs-label { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, .82vw, 13px); font-weight: 600; color: var(--text); margin-bottom: .4vh; }
+.val-obs-body { font-size: clamp(9px, .76vw, 12px); color: rgba(237,232,220,.55); line-height: 1.62; }
+.val-customer-voice { margin-top: 2vh; padding: 1.8vh 2.5vw; border-left: 2px solid var(--gold); background: rgba(201,168,76,.04); }
+.val-cv-quote { font-size: clamp(11px, .92vw, 14px); font-style: italic; color: var(--text); line-height: 1.65; margin-bottom: 1vh; }
+.val-cv-meta { display: flex; gap: 1.2vw; align-items: baseline; margin-bottom: .5vh; }
+.val-cv-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, .82vw, 13px); font-weight: 700; color: var(--gold); }
+.val-cv-profile { font-size: clamp(9px, .72vw, 11px); color: var(--muted); }
+.val-cv-why { font-size: clamp(9px, .73vw, 11.5px); color: var(--green); line-height: 1.55; }
+
+/* ========= SLIDE 4: MODEL ========= */
+.model-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4vw; margin-top: 1.5vh; flex: 1; align-items: start; }
+.daijia-ch { font-size: clamp(60px, 8vw, 110px); color: rgba(201,168,76,.1); line-height: 1; margin-bottom: 2vh; display: block; }
+.why-box { background: var(--surface); border: 1px solid var(--border); padding: 2.2vh 2vw; margin-top: 2vh; }
+.why-lbl { font-family: 'Space Grotesk', sans-serif; font-size: .54rem; letter-spacing: .13em; text-transform: uppercase; color: var(--gold); margin-bottom: 1vh; }
+.why-txt { font-size: clamp(10px, .82vw, 13px); color: rgba(237,232,220,.6); line-height: 1.65; }
+.mstat { display: flex; align-items: baseline; gap: 12px; padding: 1.3vh 0; border-bottom: 1px solid var(--border); }
+.mstat:last-child { border-bottom: 0; }
+.mstat-lbl { font-family: 'Space Grotesk', sans-serif; font-size: .52rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); min-width: 108px; flex-shrink: 0; }
+.mstat-val { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--text); }
+
+/* ========= SLIDE 5: GRAVEYARD ========= */
+.grave-list { list-style: none; margin-top: 1.5vh; display: flex; flex-direction: column; gap: 1.2vh; max-width: 820px; }
+.grave-item { display: flex; gap: 2vw; align-items: flex-start; padding: 1.6vh 0; border-bottom: 1px solid var(--border); opacity: .72; }
+.grave-item:last-child { border-bottom: 0; }
+.dagger { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--muted); flex-shrink: 0; margin-top: 1px; }
+.grave-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(11px, .9vw, 14px); font-weight: 600; text-decoration: line-through; text-decoration-color: rgba(255,255,255,.18); margin-bottom: 4px; color: var(--text); }
+.grave-note { font-size: clamp(10px, .8vw, 12.5px); color: var(--muted); line-height: 1.55; }
+.pattern-box { margin-top: auto; padding: 2vh 2.5vw; background: var(--surface); border-left: 2px solid var(--border); font-size: clamp(10px, .82vw, 13px); color: rgba(237,232,220,.5); line-height: 1.7; max-width: 840px; }
+.pattern-box strong { color: rgba(237,232,220,.65); }
+
+/* ========= SLIDE 6: WEDGE ========= */
+.wedge-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1.4vw; flex: 1; margin-top: 1vh; }
+.wedge-cell { border: 1px solid var(--border); padding: 2.5vh 2vw; display: flex; flex-direction: column; gap: .8vh; transition: border-color .2s; }
+.wedge-cell:hover { border-color: rgba(201,168,76,.3); }
+.wedge-num { font-family: 'Playfair Display', serif; font-size: clamp(24px, 2.8vw, 40px); color: var(--gold); font-style: italic; font-weight: 700; line-height: 1; }
+.wedge-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, .85vw, 13px); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text); }
+.wedge-body { font-size: clamp(10px, .8vw, 12.5px); color: rgba(237,232,220,.55); line-height: 1.62; }
+.market-strip { border-top: 1px solid var(--border); padding-top: 2vh; font-size: clamp(10px, .82vw, 13px); color: var(--muted); line-height: 1.5; }
+.market-strip strong { color: var(--gold); }
+
+/* ========= SLIDE 7: PRODUCT ========= */
+.steps-row { display: grid; grid-template-columns: repeat(5,1fr); gap: 1.2vw; margin-top: 1.5vh; margin-bottom: 2.5vh; }
+.step { display: flex; flex-direction: column; gap: .7vh; padding: 2vh 1.2vw; border-top: 2px solid var(--border); transition: border-color .2s; }
+.step:hover { border-top-color: var(--gold); }
+.step-n { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 3.5vw, 52px); font-weight: 700; color: var(--gold); line-height: 1; }
+.step-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, .85vw, 13px); font-weight: 600; text-transform: uppercase; letter-spacing: .07em; }
+.step-body { font-size: clamp(9px, .75vw, 12px); color: rgba(237,232,220,.5); line-height: 1.55; }
+.layers-lbl { font-family: 'Space Grotesk', sans-serif; font-size: .52rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2vh; }
+.layers-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2vw; }
+.layer { background: var(--surface); border: 1px solid var(--border); padding: 1.8vh 1.5vw; }
+.layer-lbl { font-family: 'Space Grotesk', sans-serif; font-size: .52rem; letter-spacing: .13em; text-transform: uppercase; color: var(--gold); margin-bottom: .8vh; }
+.layer-body { font-size: clamp(9px, .75vw, 12px); color: rgba(237,232,220,.5); line-height: 1.55; }
+
+/* ========= SLIDE 8: MOAT (3-layer) ========= */
+.moat3-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4vw; margin-top: 1.2vh; flex: 1; align-items: start; }
+.moat3-card { border: 1px solid var(--border); padding: 2.2vh 1.6vw; display: flex; flex-direction: column; gap: .9vh; transition: border-color .2s; }
+.moat3-card:hover { border-color: rgba(201,168,76,.3); }
+.moat3-num { font-family: 'Space Grotesk', sans-serif; font-size: clamp(22px, 2.8vw, 40px); font-weight: 700; color: rgba(201,168,76,.2); line-height: 1; }
+.moat3-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(11px, .9vw, 14px); font-weight: 600; color: var(--text); letter-spacing: .04em; }
+.moat3-body { font-size: clamp(9px, .76vw, 12px); color: rgba(237,232,220,.52); line-height: 1.62; flex: 1; }
+.moat3-cannot { margin-top: .8vh; padding-top: .8vh; border-top: 1px solid var(--border); font-size: clamp(9px, .73vw, 11.5px); color: rgba(237,232,220,.4); line-height: 1.55; }
+.moat3-cannot-label { color: var(--danger); font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+.moat-flywheel { margin-top: 1.8vh; padding: 1.2vh 2vw; background: rgba(201,168,76,.04); border: 1px solid var(--border); font-family: 'Space Grotesk', sans-serif; font-size: clamp(9px, .76vw, 12px); color: var(--gold); text-align: center; letter-spacing: .04em; }
+.moat-cta { margin-top: 1vh; font-size: clamp(10px, .82vw, 13px); font-style: italic; color: rgba(237,232,220,.55); text-align: center; line-height: 1.6; }
+
+/* ========= SLIDE 9: WHY BOLT ========= */
+.bolt-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.4vw; margin-bottom: 2.5vh; }
+.bolt-stat { padding: 2vh 1.4vw; border-bottom: 2px solid var(--gold); }
+.bolt-val { font-family: 'Space Grotesk', sans-serif; font-size: clamp(22px, 3vw, 44px); font-weight: 700; color: var(--gold); line-height: 1; }
+.bolt-lbl { font-size: clamp(9px, .75vw, 12px); color: rgba(237,232,220,.45); margin-top: .6vh; line-height: 1.45; }
+.fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2vw; }
+.fit-cell { padding: 1.8vh 1.5vw; border: 1px solid var(--border); }
+.fit-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, .82vw, 13px); font-weight: 600; color: var(--text); margin-bottom: .7vh; letter-spacing: .03em; }
+.fit-body { font-size: clamp(9px, .75vw, 12px); color: rgba(237,232,220,.5); line-height: 1.55; }
+.inversion-block { margin-top: 2vh; padding: 1.6vh 2vw; background: rgba(209,69,53,.05); border: 1px solid rgba(209,69,53,.2); }
+.inversion-label { font-family: 'Space Grotesk', sans-serif; font-size: .5rem; letter-spacing: .15em; text-transform: uppercase; color: var(--danger); margin-bottom: 1.2vh; }
+.inversion-items { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4vw; }
+.inversion-item { font-size: clamp(9px, .75vw, 12px); color: rgba(237,232,220,.5); line-height: 1.55; padding-left: 1.3em; position: relative; }
+.inversion-item::before { content: '✗'; position: absolute; left: 0; color: var(--danger); font-size: .85em; }
+
+/* ========= SLIDE 10: ECONOMICS ========= */
+.econ-table { width: 100%; max-width: 900px; border-collapse: collapse; margin-top: 2vh; }
+.econ-table th { font-family: 'Space Grotesk', sans-serif; font-size: .52rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); text-align: left; padding: .8vh 1.2vw; border-bottom: 1px solid var(--border); }
+.econ-table td { padding: 1.3vh 1.2vw; font-size: clamp(11px, .88vw, 14px); border-bottom: 1px solid rgba(255,255,255,.03); }
+.econ-table .v { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--text); white-space: nowrap; }
+.econ-table .n { color: rgba(237,232,220,.4); font-size: clamp(9px, .72vw, 11.5px); }
+.econ-table tr.hi td { background: rgba(201,168,76,.07); border-bottom-color: rgba(201,168,76,.18); }
+.econ-table tr.hi .v { color: var(--gold); }
+.econ-foot { margin-top: 2vh; font-size: clamp(9px, .7vw, 11px); color: var(--muted); line-height: 1.65; max-width: 880px; }
+
+/* ========= SLIDE 11: GTM ========= */
+.phases { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2vw; flex: 1; margin-top: 2vh; }
+.phase { border: 1px solid var(--border); padding: 2.5vh 1.5vw; display: flex; flex-direction: column; gap: 1vh; }
+.phase-num { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3.5vw, 50px); color: rgba(201,168,76,.25); font-style: italic; font-weight: 700; line-height: 1; }
+.phase-period { font-family: 'Space Grotesk', sans-serif; font-size: .52rem; letter-spacing: .13em; text-transform: uppercase; color: var(--gold); }
+.phase-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(10px, .88vw, 14px); font-weight: 600; color: var(--text); }
+.phase-detail { font-size: clamp(9px, .76vw, 12px); color: rgba(237,232,220,.48); line-height: 1.62; margin-top: .3vh; }
+
+/* ========= SLIDE 12: TEAM ========= */
+.team-layout { display: flex; flex-direction: column; gap: 2vh; flex: 1; margin-top: 1.5vh; }
+.founder-block { border: 1px solid rgba(201,168,76,.22); padding: 2.8vh 2.5vw; display: grid; grid-template-columns: 180px 1fr; gap: 3vw; align-items: start; }
+.f-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(15px, 1.4vw, 21px); font-weight: 600; color: var(--text); }
+.f-title { font-size: .56rem; letter-spacing: .13em; text-transform: uppercase; color: var(--gold); margin-top: .5vh; }
+.f-bio { list-style: none; display: flex; flex-direction: column; gap: .9vh; }
+.f-bio li { font-size: clamp(10px, .8vw, 13px); color: rgba(237,232,220,.58); line-height: 1.55; padding-left: 1em; position: relative; }
+.f-bio li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+.hires-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2vw; }
+.hire { border: 1px dashed rgba(255,255,255,.1); padding: 2vh 1.5vw; }
+.hire-lbl { font-family: 'Space Grotesk', sans-serif; font-size: .5rem; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); margin-bottom: .8vh; }
+.hire-title { font-size: clamp(11px, .86vw, 14px); font-weight: 500; color: var(--text); margin-bottom: .5vh; }
+.hire-desc { font-size: clamp(9px, .73vw, 12px); color: rgba(237,232,220,.42); line-height: 1.5; }
+.hire-badge { display: inline-block; margin-top: 1.2vh; font-family: 'Space Grotesk', sans-serif; font-size: .48rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,.28); padding: 2px 8px; }
+
+/* ========= SLIDE 13: ASK ========= */
+.ask-hl { font-family: 'Playfair Display', serif; font-size: clamp(34px, 5vw, 76px); font-weight: 900; line-height: 1.02; margin-bottom: 4vh; }
+.ask-cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5vw; flex: 1; }
+.ask-col { border-top: 2px solid var(--border); padding-top: 2.5vh; display: flex; flex-direction: column; }
+.ask-col:nth-child(2) { border-top-color: var(--gold); }
+.ask-col-title { font-family: 'Space Grotesk', sans-serif; font-size: .53rem; letter-spacing: .17em; text-transform: uppercase; color: var(--muted); margin-bottom: 2.5vh; }
+.ask-col:nth-child(2) .ask-col-title { color: var(--gold); }
+.ask-items { list-style: none; display: flex; flex-direction: column; gap: 1.5vh; }
+.ask-items li { font-size: clamp(11px, .88vw, 14px); color: rgba(237,232,220,.7); line-height: 1.5; padding-left: 1.3em; position: relative; }
+.ask-items li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: .85em; top: .05em; }
+.ask-items.tl li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); top: 6px; }
+.ask-contact { margin-top: auto; padding-top: 2vh; border-top: 1px solid var(--border); font-size: clamp(9px, .75vw, 11.5px); color: var(--muted); }
+</style>
+</head>
+<body>
+<div id="pres">
+  <div class="pb"><div class="pb-fill" id="pbf"></div></div>
+  <div class="ctr" id="ctr">01 / 13</div>
+
+  <button class="nav nav-prev" onclick="move(-1)" aria-label="Previous">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="nav nav-next" onclick="move(1)" aria-label="Next">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide s-cover active" data-i="0">
+    <div class="cover-eye">Strictly Confidential · For Bolt Review Only · V1.1 · Q2 2026</div>
+    <h1 class="hero">KEYS</h1>
+    <div class="cover-line"></div>
+    <p class="cover-tag">Africa's designated driver network.</p>
+    <p class="cover-sub2">A category infrastructure play for Bolt — built on the validated billion-dollar model from China, adapted for the markets where it actually works.</p>
+    <div class="cover-author">
+      <div class="au-name">Precious-Ryan Ndubuisi</div>
+      <div class="au-role">Independent Web3 &amp; Fintech BD Consultant</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: PROBLEM -->
+  <div class="slide" data-i="1">
+    <div class="sec-label">II · The Problem</div>
+    <h2 class="hl">Africa is the worst place<br>in the world to drink and drive.</h2>
+    <div class="stats-grid">
+      <div class="stat-block">
+        <div class="stat-region">South Africa</div>
+        <div class="stat-row">
+          <span class="stat-num">58%</span>
+          <span class="stat-desc">of road deaths involve alcohol — nearly 3× the global average of 20%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num" style="font-size:clamp(28px,3.2vw,48px)">R18.2B</span>
+          <span class="stat-desc">annual economic cost of alcohol-related crashes</span>
+        </div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-region">Nigeria</div>
+        <div class="stat-row">
+          <span class="stat-num">21.4</span>
+          <span class="stat-desc">road deaths per 100,000 people — among Africa's worst, with weak DUI enforcement and no scalable alternative</span>
+        </div>
+      </div>
+    </div>
+    <div class="status-quo-strip">
+      <span class="sq-label">What people do instead</span>
+      <span class="sq-body">Two separate Bolt rides — one home tonight, one back to retrieve the car in the morning. Cost: <strong>₦16,000–30,000</strong>. Keys costs <strong>₦18,000</strong> and removes the morning retrieval entirely.</span>
+    </div>
+    <div class="compound-list">
+      <div class="compound-item">The morning car retrieval is worse than the night ride — it's the more painful, underserved half of the problem.</div>
+      <div class="compound-item">People drive impaired because they don't trust an unknown Bolt driver with their keys — it's an identity trust problem, not a laziness problem.</div>
+      <div class="compound-item">Nobody plans to drink and drive. The decision happens in the car park at 1am when everyone else is leaving.</div>
+    </div>
+    <div class="insight">And yet — no scaled, app-based designated-driver category exists anywhere on the continent.</div>
+  </div>
+
+  <!-- SLIDE 3: VALIDATION -->
+  <div class="slide" data-i="2">
+    <div class="sec-label">III · Validation</div>
+    <h2 class="hl" style="margin-bottom:1.5vh">We've lived this problem. Here's what we've observed.</h2>
+    <div class="val-grid">
+      <div class="val-archetype">
+        <div class="val-arch-label">Day-1 customer</div>
+        <div class="val-arch-profile">30–45 entrepreneur, Lagos</div>
+        <p class="val-arch-desc">Owns a vehicle worth ₦8M–25M. Active in Victoria Island and Lekki nightlife 2–4 nights per month. Has tried the two-Bolt workaround. Trusts a vetted, named driver — not an anonymous platform stranger — to handle their keys.</p>
+        <div class="val-arch-why">Owns the car. Cares about it. Has social capital to refer 3+ people after a single good experience. Present at the exact venues and hours where demand concentrates.</div>
+      </div>
+      <div class="val-observations">
+        <div class="val-obs-item">
+          <div class="val-obs-label">The retrieval problem is worse than the night ride</div>
+          <div class="val-obs-body">Getting home is solved. Getting your car back at 9am from a venue 12 km away — with no breakfast, no ride, and a work call at 10 — is the part nobody talks about.</div>
+        </div>
+        <div class="val-obs-item">
+          <div class="val-obs-label">Trust blocks more decisions than price</div>
+          <div class="val-obs-body">Handing a ₦15M SUV to an anonymous driver feels riskier than driving impaired. The barrier isn't cost awareness — it's identity verification at the moment of key handoff.</div>
+        </div>
+        <div class="val-obs-item">
+          <div class="val-obs-label">The decision happens at 1am in a car park</div>
+          <div class="val-obs-body">Nobody plans to drink and drive. The decision is made when everyone else is leaving and there's no pre-booked alternative. Booking at 8pm — or a venue QR at the door — is the only intervention that works.</div>
+        </div>
+      </div>
+    </div>
+    <div class="val-customer-voice">
+      <div class="val-cv-quote">"I love to go out. But at 2am, every checkpoint feels personal. I'd rather pay someone I trust to drive me home in my own car than explain myself to the police with wine on my breath."</div>
+      <div class="val-cv-meta">
+        <span class="val-cv-name">Tina</span>
+        <span class="val-cv-profile">30s, Lagos entrepreneur, regular at VI and Lekki venues</span>
+      </div>
+      <div class="val-cv-why">Tina isn't afraid of an accident. She's afraid of the checkpoint. That's FRSC enforcement creating demand — exactly the tailwind we're riding.</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: VALIDATED MODEL -->
+  <div class="slide" data-i="3">
+    <div class="sec-label">IV · The Validated Model</div>
+    <h2 class="hl">This isn't a thesis.<br>China has been running it for a decade.</h2>
+    <div class="model-grid">
+      <div>
+        <span class="daijia-ch">代驾</span>
+        <p class="sub" style="margin-bottom:2vh"><strong style="color:var(--text)">Daijia — designated driving on demand.</strong> A driver arrives at your location on a foldable e-bike, stows it in your trunk, and drives you home in your own car. You pay through the app.</p>
+        <div class="why-box">
+          <div class="why-lbl">Why it works</div>
+          <div class="why-txt">Zero fleet cost. The user keeps their car. The driver pool is decoupled from vehicle ownership. Unit economics survive in markets where labor is cheap relative to private vehicle cost.</div>
+        </div>
+      </div>
+      <div>
+        <div class="mstat"><span class="mstat-lbl">Launched</span><span class="mstat-val">July 2015</span></div>
+        <div class="mstat"><span class="mstat-lbl">Operator</span><span class="mstat-val">Didi Daijia (Didi Chuxing)</span></div>
+        <div class="mstat"><span class="mstat-lbl">Cities</span><span class="mstat-val gold">~200 in China</span></div>
+        <div class="mstat"><span class="mstat-lbl">Consolidation</span><span class="mstat-val">Didi acq. E-Daijia, Aug 2022</span></div>
+        <div class="mstat"><span class="mstat-lbl">Global CAGR</span><span class="mstat-val gold">5%+ (2023–2030)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: GRAVEYARD -->
+  <div class="slide" data-i="4">
+    <div class="sec-label">V · The Graveyard</div>
+    <h2 class="hl" style="max-width:580px">Why a dozen Western attempts have stalled.</h2>
+    <ul class="grave-list">
+      <li class="grave-item">
+        <span class="dagger">†</span>
+        <div><div class="grave-name">BeMyDD</div><div class="grave-note">US designated-driver app, ~2010s. Failed to reach unit economics in suburban markets — driver dispatch cost exceeded rider willingness to pay.</div></div>
+      </li>
+      <li class="grave-item">
+        <span class="dagger">†</span>
+        <div><div class="grave-name">Dryver</div><div class="grave-note">Still operating in select US cities, but stayed regional. Could not break out of franchise model.</div></div>
+      </li>
+      <li class="grave-item">
+        <span class="dagger">†</span>
+        <div><div class="grave-name">STEER</div><div class="grave-note">App-based DD service. Quiet exit; could not solve insurance liability at scale.</div></div>
+      </li>
+      <li class="grave-item">
+        <span class="dagger">†</span>
+        <div><div class="grave-name">Designated Driver Inc. → To Arrive Alive (Canada)</div><div class="grave-note">Acquired in 2022. Consolidation play, not a growth story.</div></div>
+      </li>
+    </ul>
+    <div class="pattern-box"><strong>The pattern:</strong> Three structural blockers in Western markets: (1) labor cost makes the human-driven-home model uneconomic vs Uber Black; (2) insurance liability for a non-owner driving an impaired customer's car is unsolved; (3) demand density never reaches the dispatch threshold. None of these apply with the same force in the African markets we target.</div>
+  </div>
+
+  <!-- SLIDE 6: WEDGE -->
+  <div class="slide" data-i="5">
+    <div class="sec-label">VI · The Wedge</div>
+    <h2 class="hl" style="margin-bottom:2vh">Why Africa works where the West didn't.</h2>
+    <div class="wedge-grid">
+      <div class="wedge-cell">
+        <div class="wedge-num">i.</div>
+        <div class="wedge-title">Labor economics flip the model</div>
+        <div class="wedge-body">A Bolt driver in Lagos earns ~₦8,000–15,000/day. A premium per-trip rate of ₦12,000–20,000 for a 45-minute job pulls supply without subsidies — impossible math in London or LA.</div>
+      </div>
+      <div class="wedge-cell">
+        <div class="wedge-num">ii.</div>
+        <div class="wedge-title">Concentrated nightlife corridors</div>
+        <div class="wedge-body">VI + Lekki (Lagos), Sandton + Rosebank (JoBurg), Westlands + Kilimani (Nairobi). Dense demand within 5–8 km radii — exactly the geography daijia needs.</div>
+      </div>
+      <div class="wedge-cell">
+        <div class="wedge-num">iii.</div>
+        <div class="wedge-title">Enforcement is rising, fast</div>
+        <div class="wedge-body">FRSC ramping DUI checkpoints. SA's National Road Traffic Amendment Act lowered BAC to 0.00. Government tailwind without government dependency.</div>
+      </div>
+      <div class="wedge-cell">
+        <div class="wedge-num">iv.</div>
+        <div class="wedge-title">Bolt is already there</div>
+        <div class="wedge-body">60%+ market share in Nigeria. Leader in 5 African markets. $104M committed to Africa safety initiatives over 3 years (Nov 2024). The distribution rail is built.</div>
+      </div>
+    </div>
+    <div class="market-strip">Africa's ride-hailing market: <strong>USD 2.85B (2024) → USD 4.28B by 2032.</strong> Designated driving is the missing premium category in that growth.</div>
+  </div>
+
+  <!-- SLIDE 7: PRODUCT -->
+  <div class="slide" data-i="6">
+    <div class="sec-label">VII · The Product</div>
+    <h2 class="hl" style="margin-bottom:2vh">What Keys actually is.</h2>
+    <div class="steps-row">
+      <div class="step"><div class="step-n">1</div><div class="step-title">Request</div><div class="step-body">User opens Bolt. Taps 'Keys' category next to Economy / Comfort.</div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-title">Match</div><div class="step-body">Certified Keys driver dispatched on foldable e-bike. ETA shown live.</div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-title">Verify</div><div class="step-body">Driver arrives. Pre-ride 360° vehicle scan via app for damage protection.</div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-title">Drive</div><div class="step-body">E-bike folds into trunk. Driver takes user home in their own car.</div></div>
+      <div class="step"><div class="step-n">5</div><div class="step-title">Settle</div><div class="step-body">Drop-off, photo confirmation, payment via Bolt wallet. Driver e-bikes back out.</div></div>
+    </div>
+    <div class="layers-lbl">What Keys Owns — And Bolt Doesn't Have to Build</div>
+    <div class="layers-row">
+      <div class="layer"><div class="layer-lbl">Driver Layer</div><div class="layer-body">Recruitment, training, certification, background checks, e-bike supply.</div></div>
+      <div class="layer"><div class="layer-lbl">Insurance Layer</div><div class="layer-body">Per-trip third-party-driver policy structured with a local underwriter.</div></div>
+      <div class="layer"><div class="layer-lbl">Ops Layer</div><div class="layer-body">Dispatch, routing, bar/restaurant partnerships, claims, support.</div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: MOAT -->
+  <div class="slide" data-i="7">
+    <div class="sec-label">VIII · The Moat</div>
+    <h2 class="hl" style="margin-bottom:.8vh">Three structural advantages Bolt cannot replicate.</h2>
+    <p class="sub" style="margin-bottom:1.5vh">A fast follower can clone the app in 90 days. They cannot clone what the app builds over 24 months.</p>
+    <div class="moat3-grid">
+      <div class="moat3-card">
+        <div class="moat3-num">01</div>
+        <div class="moat3-title">Identity Graph</div>
+        <div class="moat3-body">Every completed trip adds a data point: which driver handled which keys, at what hour, at which venue, with what outcome. After 10,000 trips, you own the only verified driver-trust dataset in African nightlife. Bolt has ride ratings. You have key-handoff history. Those are different assets — and yours transfers directly to insurance underwriting.</div>
+        <div class="moat3-cannot"><span class="moat3-cannot-label">Bolt cannot: </span>Bolt rates drivers on ride quality, not key custody. Retraining the data model requires starting over.</div>
+      </div>
+      <div class="moat3-card">
+        <div class="moat3-num">02</div>
+        <div class="moat3-title">Venue Distribution</div>
+        <div class="moat3-body">Once 50 clubs and hotels in Lagos put a Keys QR at the exit, you own the moment of demand. Bolt would need to negotiate the same 50 deals — and agree not to compete on standard rides (they won't). You offer venues a 5% referral commission per booking; Bolt's margin structure makes that structurally awkward.</div>
+        <div class="moat3-cannot"><span class="moat3-cannot-label">Bolt cannot: </span>Bolt's incentives misalign with venue exclusivity. A venue partner who sends rides to Keys is also sending rides away from standard Bolt Economy.</div>
+      </div>
+      <div class="moat3-card">
+        <div class="moat3-num">03</div>
+        <div class="moat3-title">Liability Framework</div>
+        <div class="moat3-body">A licensed 'car custody' operator carries per-trip third-party-driver insurance that Bolt's ToS explicitly excludes. When FRSC formalises DUI checkpoints (it's coming), Keys is the compliant option. Bolt becomes the liability.</div>
+        <div class="moat3-cannot"><span class="moat3-cannot-label">Bolt cannot: </span>Bolt's legal team will not accept liability for a non-Bolt vehicle driven by a third party. That constraint is structural, not fixable with a product update.</div>
+      </div>
+    </div>
+    <div class="moat-flywheel">Trust data → insurance credibility → venue partnerships → more trip data → better matching → deeper trust data.</div>
+    <div class="moat-cta">The flywheel compounds. Each layer makes the next harder to replicate — and the data advantage widens every week you operate.</div>
+  </div>
+
+  <!-- SLIDE 9: WHY BOLT -->
+  <div class="slide" data-i="8">
+    <div class="sec-label">IX · Why Bolt</div>
+    <h2 class="hl" style="margin-bottom:2vh">This pitch only makes sense to one partner.</h2>
+    <div class="bolt-stats">
+      <div class="bolt-stat"><div class="bolt-val">#1</div><div class="bolt-lbl">Market position across 5 African markets</div></div>
+      <div class="bolt-stat"><div class="bolt-val">60%</div><div class="bolt-lbl">Market share in Nigeria, Africa's largest economy</div></div>
+      <div class="bolt-stat"><div class="bolt-val">$104M</div><div class="bolt-lbl">Committed to Africa safety initiatives, 3 years (Nov 2024)</div></div>
+      <div class="bolt-stat"><div class="bolt-val">€1.7B</div><div class="bolt-lbl">Global revenue (2023) · 200M+ users worldwide</div></div>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-cell"><div class="fit-title">→ Defends premium segment</div><div class="fit-body">Uber's Africa play has been a steady push into Comfort/XL/EV. Keys gives Bolt a category Uber can't match without 12+ months of build.</div></div>
+      <div class="fit-cell"><div class="fit-title">→ Activates the $104M safety mandate</div><div class="fit-body">Bolt's own commitment makes this strategically pre-approved. Keys is the most concrete way to demonstrate DUI reduction in market.</div></div>
+      <div class="fit-cell"><div class="fit-title">→ Unlocks the alcohol industry as a partner</div><div class="fit-body">Diageo, Pernod Ricard, Heineken all run DUI-prevention CSR budgets in Africa. Keys is the channel they've been waiting for.</div></div>
+      <div class="fit-cell"><div class="fit-title">→ Locks in higher-LTV riders</div><div class="fit-body">Car owners using designated driving are upper-middle-class repeat customers — exactly the cohort Bolt is competing for.</div></div>
+    </div>
+    <div class="inversion-block">
+      <div class="inversion-label">Why Bolt won't build this internally</div>
+      <div class="inversion-items">
+        <div class="inversion-item">Bolt's ToS explicitly excludes third-party key custody — renegotiating that insurance position takes 12–18 months of legal lift.</div>
+        <div class="inversion-item">Driver identity data (10,000+ verified key-handoff events) cannot be bootstrapped. It accumulates one trip at a time.</div>
+        <div class="inversion-item">Designated driving is a liability centre for a platform operator. It's a revenue centre for a specialist. That incentive gap is structural.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: ECONOMICS -->
+  <div class="slide" data-i="9">
+    <div class="sec-label">X · Unit Economics</div>
+    <h2 class="hl">What a single Keys trip looks like <span class="muted-c" style="font-size:.72em;font-weight:400">(Lagos baseline)</span></h2>
+    <table class="econ-table">
+      <thead>
+        <tr><th>Line Item</th><th>Value</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Average trip distance</td><td class="v">12 km</td><td class="n">Victoria Island → Lekki / Ikoyi corridor</td></tr>
+        <tr><td>Average trip duration</td><td class="v">45 min</td><td class="n">incl. driver pickup, drop, return e-bike</td></tr>
+        <tr><td>Customer fare (target)</td><td class="v gold">₦18,000</td><td class="n">≈ 1.6× standard Bolt economy — legible, defensible</td></tr>
+        <tr><td>Driver payout</td><td class="v">₦10,800</td><td class="n">60% take rate — competitive vs alternatives</td></tr>
+        <tr><td>Insurance wrapper</td><td class="v">₦600</td><td class="n">~3.3% of fare, embedded</td></tr>
+        <tr><td>Platform commission (Bolt + Keys)</td><td class="v">₦4,200</td><td class="n">split 60/40 in favor of Bolt</td></tr>
+        <tr class="hi"><td><strong>Keys gross margin per trip</strong></td><td class="v">₦2,400</td><td class="n">~13% — scales with volume and bar partnerships</td></tr>
+      </tbody>
+    </table>
+    <div class="econ-foot">NGN baseline. 1.6× Bolt economy fare anchors the price on an existing mental model customers already trust. Bar/restaurant referral commissions (~5%) treated as upside, not in baseline. Driver supply modelled on Bolt's 2025 Lagos rate cards; rate premium calibrated to pull existing Bolt drivers into weekend night shifts. Surge pricing applies for peak Fri/Sat 10pm–3am windows.</div>
+  </div>
+
+  <!-- SLIDE 11: GTM -->
+  <div class="slide" data-i="10">
+    <div class="sec-label">XI · Go-to-Market</div>
+    <h2 class="hl">From Lagos to the Gulf in 24 months.</h2>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-num">i.</div>
+        <div class="phase-period">Months 0–6</div>
+        <div class="phase-title">Lagos Pilot</div>
+        <div class="phase-detail">VI + Lekki + Ikoyi only. 50 trained drivers. Underwriter agreement signed. 8 launch venue partners (Quilox, Hard Rock, RSVP, etc.). Target: 2,000 completed trips, sub-2% incident rate.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">ii.</div>
+        <div class="phase-period">Months 6–12</div>
+        <div class="phase-title">Lagos Scale + Johannesburg</div>
+        <div class="phase-detail">Lagos to 200+ drivers. Sandton/Rosebank launch, partnering with Bolt SA. SA insurance product (RTMC-aligned). 12,000 cumulative trips.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">iii.</div>
+        <div class="phase-period">Months 12–18</div>
+        <div class="phase-title">Nairobi + Cape Town</div>
+        <div class="phase-detail">Westlands launch. Cape Town V&amp;A corridor. Multi-country ops playbook locked. First alcohol-brand sponsorship contract (Diageo / Pernod Ricard).</div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">iv.</div>
+        <div class="phase-period">Months 18–24</div>
+        <div class="phase-title">Gulf Expansion</div>
+        <div class="phase-detail">Dubai pilot — exact unit economics fit (cheap labor + expensive cars + strict DUI). Bolt entered Dubai Dec 2024; Keys becomes the safety-led differentiator vs Careem.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: TEAM -->
+  <div class="slide" data-i="11">
+    <div class="sec-label">XII · Who's Building This</div>
+    <h2 class="hl" style="margin-bottom:2vh">Why this team is the right team for this market.</h2>
+    <div class="team-layout">
+      <div class="founder-block">
+        <div>
+          <div class="f-name">Precious-Ryan Ndubuisi</div>
+          <div class="f-title">Founder &amp; CEO</div>
+        </div>
+        <ul class="f-bio">
+          <li>5+ years institutional crypto, DeFi, and cross-chain BD — Copper.co, Contango, Router Protocol, Meson Finance, Staked (Kraken), Quranium, FD Labs</li>
+          <li>Current mandate: BD lead at Architect Exchange (BMA-regulated; backed by MIAX, Galaxy, ARK, VanEck) — sourcing market makers for NGN/KES/UGX pairs</li>
+          <li>Network across African fintech, mobility, regulators, and underwriters; original concept design &amp; regional adaptation for this category</li>
+        </ul>
+      </div>
+      <div class="hires-row">
+        <div class="hire">
+          <div class="hire-lbl">Day-one hire</div>
+          <div class="hire-title">Head of Operations, Lagos</div>
+          <div class="hire-desc">Ex-Bolt / Uber GM-level. Driver supply, dispatch, training.</div>
+          <span class="hire-badge">To be hired on signing</span>
+        </div>
+        <div class="hire">
+          <div class="hire-lbl">Day-one hire</div>
+          <div class="hire-title">Head of Insurance &amp; Risk</div>
+          <div class="hire-desc">Ex-AXA Mansard / Leadway. Underwriter relationship lead.</div>
+          <span class="hire-badge">To be hired on signing</span>
+        </div>
+        <div class="hire">
+          <div class="hire-lbl">Day-one hire</div>
+          <div class="hire-title">Head of Venue Partnerships</div>
+          <div class="hire-desc">Hospitality industry insider. Bar/restaurant deals.</div>
+          <span class="hire-badge">To be hired on signing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: ASK -->
+  <div class="slide" data-i="12">
+    <div class="sec-label">XIII · The Ask</div>
+    <div class="ask-hl">90 days.<br>One city.<br>One signed pilot.</div>
+    <div class="ask-cols">
+      <div class="ask-col">
+        <div class="ask-col-title">What We Want From Bolt</div>
+        <ul class="ask-items">
+          <li>Lagos exclusivity for the Keys category, 24 months</li>
+          <li>Integration of Keys as an in-app category (Economy / Comfort / Keys)</li>
+          <li>$1.5M pilot capital — driver onboarding, e-bike fleet, insurance float</li>
+          <li>Joint exec sponsor (Bolt Africa GM)</li>
+        </ul>
+      </div>
+      <div class="ask-col">
+        <div class="ask-col-title">What Bolt Gets</div>
+        <ul class="ask-items">
+          <li>60% of platform commission</li>
+          <li>Category exclusivity vs Uber, inDrive, Yango in target markets</li>
+          <li>Branded co-launch under Bolt's existing safety mandate</li>
+          <li>Right of first refusal on equity in NewCo at next round</li>
+        </ul>
+      </div>
+      <div class="ask-col">
+        <div class="ask-col-title">What Happens Next</div>
+        <ul class="ask-items tl">
+          <li>Week 1–2: NDA + term sheet</li>
+          <li>Week 3–6: Underwriter LOI + venue partner LOIs</li>
+          <li>Week 7–10: Driver recruitment + app integration</li>
+          <li>Week 11–12: Soft launch, VI/Lekki only</li>
+        </ul>
+        <div class="ask-contact">Precious-Ryan Ndubuisi · [email] · [phone] · [linkedin]</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- #pres -->
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const pbf = document.getElementById('pbf');
+const ctr = document.getElementById('ctr');
+let cur = 0, busy = false;
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function go(n) {
+  if (busy) return;
+  n = Math.max(0, Math.min(n, slides.length - 1));
+  if (n === cur) return;
+  busy = true;
+  const prev = cur;
+  slides[prev].classList.remove('active');
+  slides[prev].classList.add('out');
+  cur = n;
+  slides[cur].classList.add('active');
+  setTimeout(() => { slides[prev].classList.remove('out'); busy = false; }, 360);
+  pbf.style.width = (cur / (slides.length - 1) * 100) + '%';
+  ctr.textContent = pad(cur + 1) + ' / ' + pad(slides.length);
+}
+
+function move(d) { go(cur + d); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); move(1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
+  else if (e.key === 'Home') { e.preventDefault(); go(0); }
+  else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 48) move(dx < 0 ? 1 : -1);
+}, { passive: true });
+
+document.getElementById('pres').addEventListener('click', e => {
+  if (e.target.closest('.nav')) return;
+  move(e.clientX > window.innerWidth / 2 ? 1 : -1);
+});
+</script>
+</body>
+</html>
